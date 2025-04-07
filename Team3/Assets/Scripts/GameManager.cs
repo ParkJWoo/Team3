@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     float time = 0.0f;
 
+    public int cardCount;
+
     private void Awake()
     {
         if (instance == null)

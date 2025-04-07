@@ -316,7 +316,7 @@ MonoBehaviour:
   front: {fileID: 7537819555312445754}
   back: {fileID: 1088896208281300892}
   anime: {fileID: 0}
-  frontImg: {fileID: 0}
+  frontImg: {fileID: 3237106200586699694}
   clip: {fileID: 0}
 --- !u!1 &7537819555312445754
 GameObject:
