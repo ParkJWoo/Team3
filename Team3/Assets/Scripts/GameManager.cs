@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     float time = 0.0f;
 
-    public int cardCount;
-
     private void Awake()
     {
         if (instance == null)
@@ -37,10 +35,8 @@ public class GameManager : MonoBehaviour
     {
         if (firstCard.idx == secondCard.idx)
         {
-            
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            
         }
         else
         {
