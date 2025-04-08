@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public float time = 0.0f;
 
+    // 스테이지 클리어 여부 판단.
+    public bool isClear_1 = false;
+    public bool isClear_2 = false;
+    public bool isClear_3 = false;
+
     public int cardCount = 16;
     public int stage = 0;
     public float closeSpeed = 0f;
@@ -81,16 +86,25 @@ public class GameManager : MonoBehaviour
 
             if (cardCount == 0)
             {
-                if(stage == 1 || stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                if(stage == 1 )                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
+                    isClear_1 = true;
+                }
+
+                if (stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                {
+                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+                    Time.timeScale = 0.0f;
+                    isClear_2 = true;
                 }
 
                 else if(stage == 3)                                      //  최종 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     clearPanel.SetActive(true);
                     Time.timeScale = 0.0f;
+                    isClear_3 = true;
                 }
             }
         }
