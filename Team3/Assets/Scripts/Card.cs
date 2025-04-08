@@ -63,7 +63,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        anim.SetBool("isClick", false);
+        
         Invoke("CloseCardInvoke", GameManager.instance.closeSpeed);
     }
 
@@ -71,5 +71,6 @@ public class Card : MonoBehaviour
     {
         front.SetActive(false);
         back.SetActive(true);
+        anim.SetBool("isClick", false);
     }
 }
