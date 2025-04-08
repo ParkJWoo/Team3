@@ -631,13 +631,14 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   board: {fileID: 872999318}
-  anim: {fileID: 1838019421234328024, guid: 4ee2e6d5102329d4596426a1a169c084, type: 3}
   clip: {fileID: 8300000, guid: 14e90642c9d3b064fb92e21e7e855985, type: 3}
   wrongClip: {fileID: 8300000, guid: fb2f6295db897d14f8cbe9795b40ae49, type: 3}
   clearPanel: {fileID: 997190244}
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
   timeTxt: {fileID: 1843043302}
+  time: 0
+  isGamePlaying: 0
   cardCount: 0
   stage: 0
   closeSpeed: 1
@@ -880,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  hasStarted: 0
 --- !u!4 &1510180060
 Transform:
   m_ObjectHideFlags: 0

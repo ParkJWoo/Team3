@@ -52,6 +52,7 @@ public class Card : MonoBehaviour
 
     public void DestroyCard()
     {
+        anim.SetBool("isMatch",true);
         Invoke("DestroyCardInvoke", 1f);
     }
 
@@ -62,13 +63,12 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-
+        anim.SetBool("isClick", false);
         Invoke("CloseCardInvoke", GameManager.instance.closeSpeed);
     }
 
     void CloseCardInvoke()
     {
-        anim.SetBool("isClick", false);
         front.SetActive(false);
         back.SetActive(true);
     }

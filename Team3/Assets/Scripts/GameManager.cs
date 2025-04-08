@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
     public Board board;
 
-    public Animator anim;
     
     AudioSource audioSource;
     public AudioClip clip;
@@ -86,10 +85,6 @@ public class GameManager : MonoBehaviour
         if (firstCard.idx == secondCard.idx)
         {
             
-            firstCard.anim.SetBool("isMatch", true);
-            secondCard.anim.SetBool("isMatch", true);
-
-
             audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
@@ -117,7 +112,7 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(wrongClip);
             firstCard.CloseCard();
             secondCard.CloseCard();
-            anim.SetBool("isClick", false);
+            
         }
 
         firstCard = null;
