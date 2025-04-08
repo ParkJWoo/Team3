@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip wrongClip;
 
     public GameObject clearPanel; //  게임 클리어 시 나오는 팀원 정보 판넬
 
@@ -55,15 +56,15 @@ public class GameManager : MonoBehaviour
             secondCard.DestroyCard();
             cardCount -= 2;
 
-            if(cardCount == 0)
+            if (cardCount == 0)
             {
                 clearPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                 Time.timeScale = 0.0f;
             }
         }
-
         else
         {
+            audioSource.PlayOneShot(wrongClip);
             firstCard.CloseCard();
             secondCard.CloseCard();
         }
