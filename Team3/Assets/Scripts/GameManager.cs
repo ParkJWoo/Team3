@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public Card firstCard;
     public Card secondCard;
 
+    AudioSource audioSource;
+    public AudioClip clip;
+
     public Text timeTxt;
     float time = 0.0f;
 
@@ -25,7 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (firstCard.idx == secondCard.idx)
         {
+            audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
         }
