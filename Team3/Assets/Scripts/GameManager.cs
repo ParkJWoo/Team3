@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public int cardCount = 16;
     public int stage = 0;
-    public float closeSpeed = 1f;
+    public float closeSpeed = 0f;
 
     private void Awake()
     {
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         audioSource = GetComponent<AudioSource>();
+        stage = 0;
+        closeSpeed = 0f;
     }
 
     // Update is called once per frame
