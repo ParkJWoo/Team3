@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b3b06b2663da54cbc2a758938761b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1200658961590031483}
+  anim1: {fileID: 8873909846762716632}
+  anim2: {fileID: 7291112723839968565}
+  anim3: {fileID: 1200658961590031483}
   stage: 3
   cardCount: 16
 --- !u!95 &1200658961590031483
@@ -1047,7 +1049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20c6327b37a38c46a94f3ee328f2064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 2783010048223443420}
+  easyanim: {fileID: 883381875927513563}
+  hardanim: {fileID: 2783010048223443420}
   closeSpeed: 0.5
 --- !u!95 &2783010048223443420
 Animator:
@@ -1217,7 +1220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b3b06b2663da54cbc2a758938761b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7291112723839968565}
+  anim1: {fileID: 8873909846762716632}
+  anim2: {fileID: 7291112723839968565}
+  anim3: {fileID: 1200658961590031483}
   stage: 2
   cardCount: 8
 --- !u!95 &7291112723839968565
@@ -1388,7 +1393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b3b06b2663da54cbc2a758938761b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 8873909846762716632}
+  anim1: {fileID: 8873909846762716632}
+  anim2: {fileID: 7291112723839968565}
+  anim3: {fileID: 1200658961590031483}
   stage: 1
   cardCount: 4
 --- !u!95 &8873909846762716632
@@ -1559,7 +1566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20c6327b37a38c46a94f3ee328f2064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 883381875927513563}
+  easyanim: {fileID: 883381875927513563}
+  hardanim: {fileID: 2783010048223443420}
   closeSpeed: 1
 --- !u!95 &883381875927513563
 Animator:
