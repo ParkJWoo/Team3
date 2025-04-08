@@ -403,7 +403,7 @@ MonoBehaviour:
   board: {fileID: 872999318}
   clip: {fileID: 8300000, guid: 14e90642c9d3b064fb92e21e7e855985, type: 3}
   wrongClip: {fileID: 8300000, guid: fb2f6295db897d14f8cbe9795b40ae49, type: 3}
-  clearPanel: {fileID: 9048584436197989240, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+  clearPanel: {fileID: 0}
   timeTxt: {fileID: 1843043302}
   cardCount: 0
   stage: 0
