@@ -211,6 +211,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8637869967101729848, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 850595540}
+    - target: {fileID: 8637869967101729848, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637869967101729848, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScene, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9048584436197989240, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
       propertyPath: m_Name
       value: ClearPanel
@@ -218,8 +230,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1980142016484207208, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 850595540}
   m_SourcePrefab: {fileID: 100100000, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+--- !u!1 &145359825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2905973129702474452, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+  m_PrefabInstance: {fileID: 1545493550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &145359830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145359825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c502dab9a35e40a4ee5f08ad8d05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1001 &358269462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,6 +576,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1665292406064751315, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
   m_PrefabInstance: {fileID: 1545493550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &850595535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1980142016484207208, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
+  m_PrefabInstance: {fileID: 135505470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &850595540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850595535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c502dab9a35e40a4ee5f08ad8d05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &872999317
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +649,26 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4115850777149219022, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
   m_PrefabInstance: {fileID: 135505470}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1150954784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4281082440287598967, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+  m_PrefabInstance: {fileID: 1545493550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1150954789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150954784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fc5e095c2cb2d448a51f26852e9ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  stage: 0
+  cardCount: 4
 --- !u!1 &1345052097
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +708,10 @@ MonoBehaviour:
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
   timeTxt: {fileID: 1843043302}
+  time: 0
+  isClear_1: 0
+  isClear_2: 0
+  isClear_3: 0
   cardCount: 0
   stage: 0
   closeSpeed: 1
@@ -982,6 +1057,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487226681920295341, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1150954789}
+    - target: {fileID: 3487226681920295341, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextStageBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487226681920295341, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NextStageButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809985009714979025, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 145359830}
+    - target: {fileID: 4809985009714979025, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809985009714979025, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScene, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6591011277076083313, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
       propertyPath: m_Name
       value: NextPanel
@@ -993,7 +1092,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4281082440287598967, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1150954789}
+    - targetCorrespondingSourceObject: {fileID: 2905973129702474452, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 145359830}
   m_SourcePrefab: {fileID: 100100000, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
 --- !u!1001 &1758788755
 PrefabInstance:
