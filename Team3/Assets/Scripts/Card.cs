@@ -33,6 +33,11 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+
         if (GameManager.instance.firstCard == null) // 첫번째 카드인지 두번째 카드인지 구분
         {
             GameManager.instance.firstCard = this;
