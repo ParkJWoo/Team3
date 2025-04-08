@@ -41,12 +41,15 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         if (time > 30.0f)
         {
             EndTxt.SetActive(true);
             Time.timeScale = 0.0f;
         }
+=======
+>>>>>>> parent of 2ab9a5d ([박진우] GameManager에 클리어 판넬 생성 조건 추가)
 =======
 >>>>>>> parent of 2ab9a5d ([박진우] GameManager에 클리어 판넬 생성 조건 추가)
     }
@@ -58,12 +61,15 @@ public class GameManager : MonoBehaviour
             firstCard.DestroyCard();
             secondCard.DestroyCard();
 <<<<<<< HEAD
+<<<<<<< HEAD
             cardCount -= 2;
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
                 EndTxt.SetActive(true);
             }
+=======
+>>>>>>> parent of 2ab9a5d ([박진우] GameManager에 클리어 판넬 생성 조건 추가)
 =======
 >>>>>>> parent of 2ab9a5d ([박진우] GameManager에 클리어 판넬 생성 조건 추가)
         }
