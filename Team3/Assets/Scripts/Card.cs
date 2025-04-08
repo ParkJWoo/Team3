@@ -28,7 +28,20 @@ public class Card : MonoBehaviour
 
     public void OpenCard() // 카드를 오픈
     {
+        if (GameManager.instance.secondCard != null) return;
 
+        front.SetActive(true);
+        back.SetActive(false);
+
+        if (GameManager.instance.firstCard == null) // 첫번째 카드인지 두번째 카드인지 구분
+        {
+            GameManager.instance.firstCard = this;
+        }
+        else
+        {
+            GameManager.instance.secondCard = this;
+            GameManager.instance.Matched(); // 두번째 카드를 오픈하면 Matched()를 실행
+        }
     }
 
     public void DestroyCard()
@@ -48,7 +61,6 @@ public class Card : MonoBehaviour
 
     void CloseCardInvoke()
     {
-        anime.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);
     }
