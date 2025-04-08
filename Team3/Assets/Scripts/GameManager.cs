@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     public Card firstCard;
     public Card secondCard;
 
-    public GameObject endTxt;
+    public Text timeTxt;
+    public GameObject EndTxt;
 
     AudioSource audioSource;
     public AudioClip clip;
 
-    public Text timeTxt;
     float time = 0.0f;
 
     public int cardCount = 0;
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         if (time > 30.0f)
         {
-            endTxt.SetActive(true);
+            EndTxt.SetActive(true);
             Time.timeScale = 0.0f;
         }
     }
@@ -56,9 +57,8 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             if (cardCount == 0)
             {
-                endTxt.SetActive(true);
                 Time.timeScale = 0.0f;
-
+                EndTxt.SetActive(true);
             }
         }
         else

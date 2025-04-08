@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.10980393, g: 0.5568628, b: 0.5921569, a: 1}
+  m_BackGroundColor: {r: 0.3529412, g: 0.30980393, b: 0.9686275, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
-  endTxt: {fileID: 0}
+  EndTxt: {fileID: 0}
   clip: {fileID: 0}
   timeTxt: {fileID: 1843043302}
   cardCount: 0
