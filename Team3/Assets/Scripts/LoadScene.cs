@@ -11,4 +11,10 @@ public class LoadScene : MonoBehaviour
         //anim.SetBool("isClick", true);
         SceneManager.LoadScene("MainScene");
     }
+
+    public void LoadStartScene()                                  //  MainScene »£√‚
+    {
+        //anim.SetBool("isClick", true);
+        SceneManager.LoadScene("StartScene");
+    }
 }
