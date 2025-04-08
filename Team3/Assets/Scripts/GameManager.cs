@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("이전 스테이지 정보 삭제");
         cardCount = 0;
-        stage = 0;
+        //stage = 0;
         Time.timeScale = 1f;
         time = 0.0f;
         timeTxt.text = time.ToString("N2");
