@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public float time = 0.0f;
 
+    public bool isGamePlaying = false; //게임 시작 여부 판단
+
     public int cardCount = 16;
     public int stage = 0;
     public float closeSpeed = 0f;
@@ -47,17 +49,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isGamePlaying)
+        {
+            return;
+        }
+
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        if (stage != 0 && GameManager.instance.cardCount > 0 && time >= 20f && AudioManager.instance.audioSource.pitch == 1.0)
-        {//20초 지나면 bgm 속도 증가
+        float remainingTime = 30f - time;
+
+        if (remainingTime <= 10f && AudioManager.instance.audioSource.pitch == 1.0f)
+        {//남은 시간이 10초 이하일 때, 오디오 속도 증가
             AudioManager.instance.SetSpeed(1.5f);
         }
 
         if (cardCount <= 0)
-        {//게임 끝 조건 확인
-            AudioManager.instance.ResetSpeed();
+        {//게임 끝난 조건 확인
+            isGamePlaying = false;
+            AudioManager.instance.ResetSpeed(); //원상복귀
             timeTxt.text = time.ToString("N2");
             return;
         }

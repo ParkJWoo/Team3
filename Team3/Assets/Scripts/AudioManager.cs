@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
 
+    public bool hasStarted = false;
+
     public void Awake()
     {
         if(instance == null)
@@ -24,11 +26,19 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = this.audioClip;
-        audioSource.loop = true;
+        if (!hasStarted)
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = this.audioClip;
+            audioSource.loop = true;
 
-        audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
+            hasStarted = true;
+        }
     }
 
     public void SetSpeed(float speed)

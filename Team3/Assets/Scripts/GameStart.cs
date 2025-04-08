@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class GameStart : MonoBehaviour
@@ -20,7 +19,9 @@ public class GameStart : MonoBehaviour
             levelPanel.SetActive(false);
             GameManager.instance.board.gameObject.SetActive(true);
             GameManager.instance.timeTxt.gameObject.SetActive(true);
+
             GameManager.instance.time = 0f; // 타이머 초기화
+            GameManager.instance.isGamePlaying = true; // 게임 시작상태
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.PlayMusic(); // BGM 시작
         }
