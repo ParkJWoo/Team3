@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        if (time > 30.0f)
+        {
+            endTxt.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
     }
     public void Matched()
     {
