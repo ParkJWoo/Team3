@@ -56,7 +56,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1f);
+        Invoke("CloseCardInvoke", GameManager.instance.closeSpeed);
     }
 
     void CloseCardInvoke()
