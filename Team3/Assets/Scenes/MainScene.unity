@@ -667,7 +667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  stage: 0
   cardCount: 4
 --- !u!1 &1345052097
 GameObject:
@@ -709,10 +708,11 @@ MonoBehaviour:
   failPanel: {fileID: 2085373612}
   timeTxt: {fileID: 1843043302}
   time: 0
+  isGamePlaying: 0
+  cardCount: 0
   isClear_1: 0
   isClear_2: 0
   isClear_3: 0
-  cardCount: 0
   stage: 0
   closeSpeed: 1
 --- !u!4 &1345052099
@@ -954,6 +954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  hasStarted: 0
 --- !u!4 &1510180060
 Transform:
   m_ObjectHideFlags: 0
@@ -1108,6 +1109,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 534668923}
     m_Modifications:
+    - target: {fileID: 1418293893711219654, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+      propertyPath: m_Text
+      value: "\U0001F512\U0001F512\uC5B4\uB824\uC6C0"
+      objectReference: {fileID: 0}
     - target: {fileID: 5967713985298481581, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
       propertyPath: m_Name
       value: LevelPanel
