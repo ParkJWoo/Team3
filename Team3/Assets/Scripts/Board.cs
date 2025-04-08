@@ -25,14 +25,14 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void Stage1BoardArrangement()                                      //  스테이지 선택창에서 선택한 스테이지 데이터 기반으로 카드 배치하는 함수
+    public void Stage1BoardArrangement() //  스테이지 선택창에서 선택한 스테이지 데이터 기반으로 카드 배치하는 함수
     {
         Debug.Log(GameManager.instance.stage);
 
-        int[] cardArr = { 0, 0, 1, 1 };
-        cardArr = cardArr.OrderBy(x => Random.Range(0f, 1f)).ToArray(); // 배열 랜덤 정렬
+        List<int> cardArr = RandomCard(2);
+        cardArr = cardArr.OrderBy(x => Random.Range(0f, 7f)).ToList(); // 배열 랜덤 정렬
 
-        for (int i = 0; i < cardArr.Length; i++) //카드 배치
+        for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
             GameObject instCard = Instantiate(Card, this.transform);
 
@@ -43,15 +43,15 @@ public class Board : MonoBehaviour
             instCard.GetComponent<Card>().Setting(cardArr[i]);
         }
         
-        GameManager.instance.cardCount = cardArr.Length;
+        GameManager.instance.cardCount = cardArr.Count;
     }
 
     public void Stage2BoardArrangement()
     {
-        int[] cardArr = { 0, 0, 1, 1, 2, 2, 3, 3 };
-        cardArr = cardArr.OrderBy(x => Random.Range(0f, 3f)).ToArray(); // 배열 랜덤 정렬
+        List<int> cardArr = RandomCard(4);
+        cardArr = cardArr.OrderBy(x => Random.Range(0f, 7f)).ToList(); // 배열 랜덤 정렬
 
-        for (int i = 0; i < cardArr.Length; i++) //카드 배치
+        for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
             GameObject instCard = Instantiate(Card, this.transform);
 
@@ -62,15 +62,15 @@ public class Board : MonoBehaviour
             instCard.GetComponent<Card>().Setting(cardArr[i]);
         }
 
-        GameManager.instance.cardCount = cardArr.Length;
+        GameManager.instance.cardCount = cardArr.Count;
     }
 
     public void Stage3BoardArrangement()
     {
-        int[] cardArr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-        cardArr = cardArr.OrderBy(x => Random.Range(0f, 7f)).ToArray(); // 배열 랜덤 정렬
+        List<int> cardArr = RandomCard(8);
+        cardArr = cardArr.OrderBy(x => Random.Range(0f, 7f)).ToList(); // 배열 랜덤 정렬
 
-        for (int i = 0; i < cardArr.Length; i++) //카드 배치
+        for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
             GameObject instCard = Instantiate(Card, this.transform);
 
@@ -81,11 +81,23 @@ public class Board : MonoBehaviour
             instCard.GetComponent<Card>().Setting(cardArr[i]);
         }
 
-        GameManager.instance.cardCount = cardArr.Length;
+        GameManager.instance.cardCount = cardArr.Count;
     }
 
-    public void Delete()
+    private List<int> RandomCard(int cardCount) // 카드 이미지의 랜덤성 부여
     {
-        //Destroy(this.gameObject);
+        List<int> allCards = Enumerable.Range(0, 8).ToList(); // 0~8까지 연속된 정수 리스트 생성
+        allCards = allCards.OrderBy(x => Random.Range(0f, 1f)).Take(cardCount).ToList(); // 리스트를 랜덤하게 재배치하고 원하는 카드의 갯수 지정
+
+        List<int> pair = new List<int>();
+        foreach (int card in allCards) // 지정한 카드를 pair리스트에 2개씩 추가
+        {
+            pair.Add(card);
+            pair.Add(card);
+        }
+
+        pair = pair.OrderBy(x => Random.Range(0f, 1f)).ToList(); // pair리스트에 추가한 카드를 랜덤하게 재배치
+
+        return pair;
     }
 }
