@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Card firstCard;
     public Card secondCard;
 
+    public GameObject endTxt;
+
     AudioSource audioSource;
     public AudioClip clip;
 
@@ -45,6 +47,13 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
+            cardCount -= 2;
+            if (cardCount == 0)
+            {
+                endTxt.SetActive(true);
+                Time.timeScale = 0.0f;
+
+            }
         }
         else
         {
