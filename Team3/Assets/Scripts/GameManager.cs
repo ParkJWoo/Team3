@@ -66,16 +66,14 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        float remainingTime = 30f - time;
-
         //if (time >= 30.0f)
         //{
         //    failPanel.SetActive(true);
         //    Time.timeScale = 0.0f;
         //}
 
-        if (remainingTime <= 10f && AudioManager.instance.audioSource.pitch == 1.0f)
-        {//남은 시간이 10초 이하일 때, 오디오 속도 증가
+        if (time >= 20f && AudioManager.instance.audioSource.pitch == 1.0f)
+        {//남은 시간이 20초 이하일 때, 오디오 속도 증가
             AudioManager.instance.SetSpeed(1.5f);
         }
 
