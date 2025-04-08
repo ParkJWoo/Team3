@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
 
     public Text timeTxt;
-    float time = 0.0f;
+    public float time = 0.0f;
 
     public int cardCount = 16;
     public int stage = 0;
@@ -49,6 +49,18 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        if (stage != 0 && GameManager.instance.cardCount > 0 && time >= 20f && AudioManager.instance.audioSource.pitch == 1.0)
+        {//20초 지나면 bgm 속도 증가
+            AudioManager.instance.SetSpeed(1.5f);
+        }
+
+        if (cardCount <= 0)
+        {//게임 끝 조건 확인
+            AudioManager.instance.ResetSpeed();
+            timeTxt.text = time.ToString("N2");
+            return;
+        }
 
         //if(time >= 30.0f)
         //{
