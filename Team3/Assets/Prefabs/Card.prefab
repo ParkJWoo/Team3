@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 750778251263010357}
   - component: {fileID: 5489955655402684645}
   - component: {fileID: 2415543384572710884}
+  - component: {fileID: 1838019421234328024}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -373,7 +374,7 @@ MonoBehaviour:
   idx: 0
   front: {fileID: 7537819555312445754}
   back: {fileID: 1088896208281300892}
-  anime: {fileID: 0}
+  anim: {fileID: 1838019421234328024}
   frontImg: {fileID: 3237106200586699694}
   clip: {fileID: 8300000, guid: 5e974ea705c7437409362b0996d05198, type: 3}
 --- !u!82 &2415543384572710884
@@ -396,7 +397,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.9922794
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -472,6 +473,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1838019421234328024
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517450310747507875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ccca98c2c1d466428455d711cfdd641, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7537819555312445754
 GameObject:
   m_ObjectHideFlags: 0

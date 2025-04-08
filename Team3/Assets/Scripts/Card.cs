@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
     public GameObject front;
     public GameObject back;
 
-    public Animator anime;
+    public Animator anim;
 
     public SpriteRenderer frontImg;
     AudioSource audioSource;
@@ -30,6 +30,7 @@ public class Card : MonoBehaviour
     {
         if (GameManager.instance.secondCard != null) return;
 
+        anim.SetBool("isClick", true);
         front.SetActive(true);
         back.SetActive(false);
 
@@ -61,11 +62,13 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
+
         Invoke("CloseCardInvoke", GameManager.instance.closeSpeed);
     }
 
     void CloseCardInvoke()
     {
+        anim.SetBool("isClick", false);
         front.SetActive(false);
         back.SetActive(true);
     }

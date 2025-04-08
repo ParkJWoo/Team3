@@ -1119,6 +1119,7 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   board: {fileID: 872999318}
+  anim: {fileID: 1838019421234328024, guid: 4ee2e6d5102329d4596426a1a169c084, type: 3}
   clip: {fileID: 8300000, guid: 14e90642c9d3b064fb92e21e7e855985, type: 3}
   wrongClip: {fileID: 8300000, guid: fb2f6295db897d14f8cbe9795b40ae49, type: 3}
   clearPanel: {fileID: 1858299124}
