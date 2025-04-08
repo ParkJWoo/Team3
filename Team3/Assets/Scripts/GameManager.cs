@@ -14,10 +14,12 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
 
+    public GameObject clearPanel;                   //  게임 클리어 시 나오는 팀원 정보 판넬
+
     public Text timeTxt;
     float time = 0.0f;
 
-    public int cardCount = 0;
+    public int cardCount = 16;
 
     private void Awake()
     {
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
+
         else
         {
             firstCard.CloseCard();
