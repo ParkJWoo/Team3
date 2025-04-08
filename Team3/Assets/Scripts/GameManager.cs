@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
     public AudioClip wrongClip;
 
-    public GameObject clearPanel; //  게임 클리어 시 나오는 팀원 정보 판넬
+    public GameObject clearPanel; // 최종 스테이지 클리어 시 나오는 팀원 정보 판넬
+    public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
+    public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
 
     public Text timeTxt;
     float time = 0.0f;
@@ -45,6 +47,12 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        //if(time >= 30.0f)
+        //{
+        //    failPanel.SetActive(true);
+        //    Time.timeScale = 0.0f;
+        //}
     }
 
     public void Matched()
@@ -54,12 +62,22 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
+
             cardCount -= 2;
 
             if (cardCount == 0)
             {
-                clearPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                Time.timeScale = 0.0f;
+                if(stage == 1 || stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                {
+                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+                    Time.timeScale = 0.0f;
+                }
+
+                else if(stage == 3)                                      //  최종 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                {
+                    clearPanel.SetActive(true);
+                    Time.timeScale = 0.0f;
+                }
             }
         }
         else
