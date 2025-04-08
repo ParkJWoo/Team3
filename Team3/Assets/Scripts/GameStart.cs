@@ -20,7 +20,7 @@ public class GameStart : MonoBehaviour
             GameManager.instance.board.gameObject.SetActive(true);
             GameManager.instance.timeTxt.gameObject.SetActive(true);
 
-            GameManager.instance.time = 0f; // 타이머 초기화
+            GameManager.instance.time = 10.0f; // 타이머 초기화
             GameManager.instance.isGamePlaying = true; // 게임 시작상태
 
             AudioManager.instance.ResetSpeed(); //피치 리셋 먼저*
