@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
     }
+
     public void Matched()
     {
         if (firstCard.idx == secondCard.idx)
@@ -47,6 +48,13 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
+            cardCount -= 2;
+
+            if(cardCount == 0)
+            {
+                clearPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+                Time.timeScale = 0.0f;
+            }
         }
 
         else
