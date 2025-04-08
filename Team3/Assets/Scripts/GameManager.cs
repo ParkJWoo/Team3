@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     float time = 0.0f;
 
+    public int cardCount = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
