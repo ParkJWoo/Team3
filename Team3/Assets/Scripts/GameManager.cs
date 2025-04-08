@@ -16,14 +16,18 @@ public class GameManager : MonoBehaviour
     public AudioClip clip;
     public AudioClip wrongClip;
 
-    public GameObject clearPanel; //  게임 클리어 시 나오는 팀원 정보 판넬
+    public GameObject clearPanel; // 최종 스테이지 클리어 시 나오는 팀원 정보 판넬
+    public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
+    public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
 
     public Text timeTxt;
-    float time = 0.0f;
+    public float time = 0.0f;
+
+    public bool isGamePlaying = false; //게임 시작 여부 판단
 
     public int cardCount = 16;
     public int stage = 0;
-    public float closeSpeed = 1f;
+    public float closeSpeed = 0f;
 
     private void Awake()
     {
@@ -40,13 +44,41 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         audioSource = GetComponent<AudioSource>();
+        stage = 0;
+        closeSpeed = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isGamePlaying)
+        {
+            return;
+        }
+
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        float remainingTime = 30f - time;
+
+        if (remainingTime <= 10f && AudioManager.instance.audioSource.pitch == 1.0f)
+        {//남은 시간이 10초 이하일 때, 오디오 속도 증가
+            AudioManager.instance.SetSpeed(1.5f);
+        }
+
+        if (cardCount <= 0)
+        {//게임 끝난 조건 확인
+            isGamePlaying = false;
+            AudioManager.instance.ResetSpeed(); //원상복귀
+            timeTxt.text = time.ToString("N2");
+            return;
+        }
+
+        //if(time >= 30.0f)
+        //{
+        //    failPanel.SetActive(true);
+        //    Time.timeScale = 0.0f;
+        //}
     }
 
     public void Matched()
@@ -61,12 +93,22 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
             firstCard.DestroyCard();
             secondCard.DestroyCard();
+
             cardCount -= 2;
 
             if (cardCount == 0)
             {
-                clearPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                Time.timeScale = 0.0f;
+                if(stage == 1 || stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                {
+                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+                    Time.timeScale = 0.0f;
+                }
+
+                else if(stage == 3)                                      //  최종 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                {
+                    clearPanel.SetActive(true);
+                    Time.timeScale = 0.0f;
+                }
             }
         }
         else
