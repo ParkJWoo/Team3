@@ -10,6 +10,8 @@ public class NextStageButton : MonoBehaviour
 
     public void NextStageBtn()
     {
+        AudioManager.instance.PlayClickSound();
+
         GameManager.instance.nextPanel.SetActive(false);
 
         GameManager.instance.time = 60.0f; // 타이머 초기화

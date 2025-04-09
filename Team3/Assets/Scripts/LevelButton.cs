@@ -21,6 +21,8 @@ public class LevelButton : MonoBehaviour
 
     public void LevelBtn()
     {
+        AudioManager.instance.PlayClickSound();
+
         st1Btn.SetActive(true);
         st2Btn.SetActive(true);
         st3Btn.SetActive(true);

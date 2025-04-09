@@ -16,6 +16,8 @@ public class StageButton : MonoBehaviour
 
     public void StageBtn()
     {
+        AudioManager.instance.PlayClickSound();
+
         switch (stage)
         {
             case 1:
