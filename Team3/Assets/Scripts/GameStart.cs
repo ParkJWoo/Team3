@@ -13,7 +13,7 @@ public class GameStart : MonoBehaviour
     public void LetGameStart()
     {
 
-        if (GameManager.instance.stage != 0 && GameManager.instance.closeSpeed != 0)
+        if (GameManager.instance.stage != 0 && GameManager.instance.level != 0)
         {
             anim.SetBool("isClick", true);
             levelPanel.SetActive(false);

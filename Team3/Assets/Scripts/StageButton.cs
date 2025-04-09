@@ -18,7 +18,7 @@ public class StageButton : MonoBehaviour
         switch (stage)
         {
             case 1:
-                if (GameManager.instance.closeSpeed == 0.5f)     //어려움난이도 선택시
+                if (GameManager.instance.level == 2)     //어려움난이도 선택시
                 {
                     if (GameManager.instance.Clear < 3)         //쉬움난이도 스테3을 못깼다면
                     {
@@ -35,7 +35,7 @@ public class StageButton : MonoBehaviour
                 {
                     return;
                 }
-                if(GameManager.instance.closeSpeed == 0.5f)     //어려움난이도 선택시
+                if(GameManager.instance.level == 2)     //어려움난이도 선택시
                 {
                     if (GameManager.instance.Clear < 4)         //어려움난이도 스테1을 못깼다면
                     {
@@ -52,7 +52,7 @@ public class StageButton : MonoBehaviour
                 {
                     return;
                 }
-                if (GameManager.instance.closeSpeed == 0.5f)     //어려움난이도 선택시
+                if (GameManager.instance.level == 2)     //어려움난이도 선택시
                 {
                     if (GameManager.instance.Clear < 5)         //어려움난이도 스테2을 못깼다면
                     {
