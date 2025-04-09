@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip normalClip;
     public AudioClip hellClip;
 
+    public AudioSource sfxSource;
+    public AudioClip tickSfx;
+
     public bool hasStarted = false;
     public bool isHell = false;
 
@@ -36,11 +39,17 @@ public class AudioManager : MonoBehaviour
 
             if (!audioSource.isPlaying)
             {
-                audioSource.clip = normalClip;
                 audioSource.Play();
-
                 hasStarted = true;
             }
+        }
+
+        if (sfxSource == null)
+        {
+            GameObject sfxObject = new GameObject("SFXSource");
+            sfxObject.transform.parent = this.transform;
+            sfxSource = sfxObject.AddComponent<AudioSource>();
+            sfxSource.loop = true;
         }
     }
 
@@ -89,6 +98,28 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = targetClip;
         audioSource.pitch = 1.0f;
         audioSource.Play();
+    }
+
+    public void PlayTickSfx()
+    {
+        if (sfxSource != null && !sfxSource.isPlaying)
+        {
+            sfxSource.clip = tickSfx;
+            sfxSource.pitch = 1.0f; // pitch 공유 X
+            sfxSource.Play();
+
+            Debug.Log("Play tick sfx: " + sfxSource.clip.name);
+        }
+    }
+
+    public void StopTickSfx()
+    {
+        if (sfxSource != null && sfxSource.isPlaying)
+        {
+            sfxSource.Stop();
+
+            Debug.Log("[GameManager] 시간 20초 이하 - BGM 속도 증가 + 효과음 재생 시작");
+        }
     }
 
     public bool IsHellMode()
