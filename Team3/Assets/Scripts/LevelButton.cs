@@ -13,8 +13,20 @@ public class LevelButton : MonoBehaviour
     public Animator anim3;
     public int level;
 
+    public GameObject st1Btn;
+    public GameObject st2Btn;
+    public GameObject st3Btn;
+
+    public GameObject startBtn;
+
     public void LevelBtn()
     {
+        st1Btn.SetActive(true);
+        st2Btn.SetActive(true);
+        st3Btn.SetActive(true);
+        startBtn.SetActive(false);
+
+
         GameManager.instance.level = level;
         GameManager.instance.stage = 0;                               //스테이지변수 초기화
         GameManager.instance.cardCount = 0;

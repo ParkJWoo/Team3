@@ -9,6 +9,8 @@ public class StageButton : MonoBehaviour
     public Animator anim2;
     public Animator anim3;
 
+    public GameObject startbtn;
+
     public int stage;
     public int cardCount;
 
@@ -67,6 +69,15 @@ public class StageButton : MonoBehaviour
         }
         GameManager.instance.stage = stage;
         GameManager.instance.cardCount = cardCount;
+
+        if (anim1.GetBool("isClick") || anim2.GetBool("isClick") || anim3.GetBool("isClick"))           //버튼이 하나라도 누른상태면 스타트버튼 보임
+        {
+            startbtn.SetActive(true);
+        }
+        else
+        {
+            startbtn.SetActive(false);
+        }
 
     }
 }
