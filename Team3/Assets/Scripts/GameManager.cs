@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (stage == 4 && !AudioManager.instance.IsHellMode())
+        {
+            AudioManager.instance.SwitchMusic(true);
+        }
+
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
@@ -98,7 +103,7 @@ public class GameManager : MonoBehaviour
             failPanel.SetActive(true);
             Time.timeScale = 0.0f;
             AudioManager.instance.ResetSpeed();
-            AudioManager.instance.SwitchMusic(AudioManager.instance.normalClip, false);
+            AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
 
             //time = 60.0f;
@@ -108,7 +113,12 @@ public class GameManager : MonoBehaviour
         {
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed();
-            AudioManager.instance.SwitchMusic(AudioManager.instance.normalClip, false);
+
+            if (stage == 4)
+            {
+                AudioManager.instance.SwitchMusic(false);
+            }
+
             //Time.timeScale = 1.0f;
             //time = 60.0f;
             //timeTxt.text = time.ToString("N2");

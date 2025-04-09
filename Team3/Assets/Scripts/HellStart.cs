@@ -18,7 +18,7 @@ public class HellStart : MonoBehaviour
         GameManager.instance.closeSpeed = closeSpeed;
         
         if (GameManager.instance.stage != 0 && GameManager.instance.closeSpeed != 0)
-        {
+        {            
             Debug.Log("BGM2");
             
             anim.SetBool("isClick", true);
@@ -30,7 +30,7 @@ public class HellStart : MonoBehaviour
             GameManager.instance.isGamePlaying = true;
 
             AudioManager.instance.ResetSpeed();
-            AudioManager.instance.SwitchMusic(AudioManager.instance.hellClip,true);
+            //AudioManager.instance.SwitchMusic(true);
         }
     }
 }

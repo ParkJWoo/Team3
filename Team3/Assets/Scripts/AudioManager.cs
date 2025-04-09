@@ -73,16 +73,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SwitchMusic(AudioClip clipToPlay, bool hellMode = false)
+    public void SwitchMusic(bool toHellMode)
     {
-        if (audioSource != null && clipToPlay != null)
+        if (audioSource == null) return;
+
+        AudioClip targetClip = toHellMode ? hellClip : normalClip;
+
+        if (audioSource.clip == targetClip)
         {
-            isHell = hellMode;
-            audioSource.Stop();
-            audioSource.clip = clipToPlay;
-            audioSource.pitch = 1.0f;
-            audioSource.Play();
+            return;
         }
+
+        isHell = toHellMode;
+        audioSource.Stop();
+        audioSource.clip = targetClip;
+        audioSource.pitch = 1.0f;
+        audioSource.Play();
+
+        Debug.Log("BGM ÀüÈ¯");
     }
 
     public bool IsHellMode()
