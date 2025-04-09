@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     public bool hasStarted = false;
     public bool isHell = false;
 
-    public void Awake() //ΩÃ±€≈Ê ∆–≈œ
+    public void Awake()
     {
         if(instance == null)
         {

@@ -1307,7 +1307,7 @@ MonoBehaviour:
   anim1: {fileID: 8873909846762716632}
   anim2: {fileID: 7291112723839968565}
   anim3: {fileID: 1200658961590031483}
-  closeSpeed: 0.5
+  level: 2
 --- !u!95 &2783010048223443420
 Animator:
   serializedVersion: 5
@@ -1827,7 +1827,7 @@ MonoBehaviour:
   anim1: {fileID: 8873909846762716632}
   anim2: {fileID: 7291112723839968565}
   anim3: {fileID: 1200658961590031483}
-  closeSpeed: 1
+  level: 1
 --- !u!95 &883381875927513563
 Animator:
   serializedVersion: 5

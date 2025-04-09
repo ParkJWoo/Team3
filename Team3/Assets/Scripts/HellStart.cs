@@ -15,7 +15,7 @@ public class HellStart : MonoBehaviour
     {
         GameManager.instance.stage = 4;
         GameManager.instance.cardCount = cardCount;
-        GameManager.instance.closeSpeed = closeSpeed;
+        GameManager.instance.level = 1;
         
         if (GameManager.instance.stage != 0 && GameManager.instance.closeSpeed != 0)
         {            
