@@ -9,7 +9,7 @@ public class HellStart : MonoBehaviour
     public float closeSpeed;
     public int stage;
     public int cardCount;
-    public float localTime { get; private set; } = 0.0f;
+    
 
     public void LetHellStart()
     {
