@@ -180,16 +180,6 @@ public class GameManager : MonoBehaviour
                 Delete();
             }
 
-            if(level == 2)
-            {
-                score++;
-               if(cardCount == 0)
-                {
-                    Invoke("ReBoard", 1f);
-                    Debug.Log("score: " + score);
-                }
-            }
-
         }
         else
         {
@@ -198,6 +188,16 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             
+        }
+
+        if (level == 2)
+        {
+            score++;
+            if (cardCount == 0)
+            {
+                Invoke("ReBoard", 1f);
+                Debug.Log("score: " + score);
+            }
         }
 
         firstCard = null;
