@@ -81,18 +81,23 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.SetSpeed(1.5f);
         }
 
-        if (time <= 0.0f)
+        if (time <= 0.0f && cardCount != 0)
         {
             failPanel.SetActive(true);
             Time.timeScale = 0.0f;
             AudioManager.instance.ResetSpeed(); //원상복귀
+            isGamePlaying = false;
+
+            //time = 60.0f;
         }
 
         if (cardCount <= 0)
         {//게임 끝난 조건 확인
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed(); //원상복귀
-            timeTxt.text = time.ToString("N2");
+            //Time.timeScale = 1.0f;
+            //time = 60.0f;
+            //timeTxt.text = time.ToString("N2");
             return;
         }
 
