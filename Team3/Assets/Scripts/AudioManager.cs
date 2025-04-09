@@ -21,10 +21,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip defaultClick;
     public AudioClip startClick;
 
-    [Range(0f, 1f)] public float bgmVolume = 0.3f;
-    [Range(0f, 1f)] public float sfxVolume = 1f;
-    [Range(0f, 1f)] public float clickVolume = 0.4f;
-
+    [Range(0f, 1f)] public float bgmVolume;
+    [Range(0f, 1f)] public float sfxVolume;
+    [Range(0f, 1f)] public float clickVolume;
 
     public void Awake()
     {

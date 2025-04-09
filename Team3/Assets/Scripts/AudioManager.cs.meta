@@ -3,7 +3,15 @@ guid: 166e46f0774f70e42a1789e8607c69fa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - normalClip: {instanceID: 0}
+  - hellClip: {instanceID: 0}
+  - SFXSource: {instanceID: 0}
+  - tickSfx: {instanceID: 0}
+  - clickSource: {instanceID: 0}
+  - defaultClick: {instanceID: 0}
+  - startClick: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
