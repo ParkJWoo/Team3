@@ -814,13 +814,12 @@ MonoBehaviour:
   clearPanel: {fileID: 997190244}
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
+  hiddenBtn: {fileID: 1464498807}
   timeTxt: {fileID: 1843043302}
   time: 60
   isGamePlaying: 0
   cardCount: 0
-  isClear_1: 0
-  isClear_2: 0
-  isClear_3: 0
+  Clear: 0
   stage: 0
   closeSpeed: 1
 --- !u!4 &1345052099
@@ -934,6 +933,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1464498807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6290027109758389100, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+  m_PrefabInstance: {fileID: 1758788755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510180057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 449}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843043302
