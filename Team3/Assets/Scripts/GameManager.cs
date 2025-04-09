@@ -126,9 +126,6 @@ public class GameManager : MonoBehaviour
 
             return;
         }
-<<<<<<< Updated upstream
-
-
 
     }
 
@@ -165,7 +162,6 @@ public class GameManager : MonoBehaviour
                 firstCard.DestroyCard(1f);
                 secondCard.DestroyCard(1f);
             }
->>>>>>> Stashed changes
 
             cardCount -= 2;
 
@@ -221,6 +217,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 Delete();
+                score++;
             }
 
         }
@@ -235,7 +232,6 @@ public class GameManager : MonoBehaviour
 
         if (level == 2)
         {
-            score++;
             if (cardCount == 0)
             {
                 Invoke("ReBoard", 1f);
