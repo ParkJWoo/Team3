@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
             hardbtnText.text = "어려움(잠김)";
         }
 
-        if (closeSpeed == 1f)
+        if (level == 1)
         {
             if (Clear < 3)                                      //쉬움모드를 모두 클리어하지않았을때
             {
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
                 }
         }
-        else if (closeSpeed == 0.5f)
+        else if (level == 2)
         {
             if (Clear < 6)                                      //어려움모드를 모두 클리어하지않았을때
             {
