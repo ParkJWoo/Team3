@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
 
+    public GameObject hiddenBtn;
+
     public Text timeTxt;
     public float time = 60.0f;
 
@@ -62,9 +64,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Clear >= 6f)                        //어려움스테3까지 클리어했을때 보임
+        {
+            hiddenBtn.SetActive(true);
+        }
+        else
+        {
+            hiddenBtn.SetActive(false);
+        }
+
         if (!isGamePlaying)
         {
             return;
+        }
+
+        if (stage == 4 && !AudioManager.instance.IsHellMode())
+        {
+            AudioManager.instance.SwitchMusic(true);
         }
 
         time -= Time.deltaTime;
@@ -77,7 +94,7 @@ public class GameManager : MonoBehaviour
         //}
 
         if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
-        {//남은 시간이 20초 이하일 때, 오디오 속도 증가
+        {
             AudioManager.instance.SetSpeed(1.5f);
         }
 
@@ -85,16 +102,23 @@ public class GameManager : MonoBehaviour
         {
             failPanel.SetActive(true);
             Time.timeScale = 0.0f;
-            AudioManager.instance.ResetSpeed(); //원상복귀
+            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
 
             //time = 60.0f;
         }
 
         if (cardCount <= 0)
-        {//게임 끝난 조건 확인
+        {
             isGamePlaying = false;
-            AudioManager.instance.ResetSpeed(); //원상복귀
+            AudioManager.instance.ResetSpeed();
+
+            if (stage == 4)
+            {
+                AudioManager.instance.SwitchMusic(false);
+            }
+
             //Time.timeScale = 1.0f;
             //time = 60.0f;
             //timeTxt.text = time.ToString("N2");
@@ -130,29 +154,50 @@ public class GameManager : MonoBehaviour
             {
                 board.gameObject.SetActive(false);
                 timeTxt.gameObject.SetActive(false);
-
-                if(stage == 1 )                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                if (stage == 1)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
-                    Clear = 1;
-                    PlayerPrefs.SetInt("Clear", Clear);
+                    if (closeSpeed == 1)
+                    {
+                        Clear = 1;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
+                    else
+                    {
+                        Clear = 4;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
                 }
-
-                if (stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                else if (stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
-                    Clear = 2;
-                    PlayerPrefs.SetInt("Clear", Clear);
+                    if (closeSpeed == 1)
+                    {
+                        Clear = 2;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
+                    else
+                    {
+                        Clear = 5;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
                 }
-
-                else if(stage == 3)                                      //  최종 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                else if (stage == 3)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
-                    clearPanel.SetActive(true);
+                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
-                    Clear = 3;
-                    PlayerPrefs.SetInt("Clear", Clear);
+                    if (closeSpeed == 1)
+                    {
+                        Clear = 3;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
+                    else
+                    {
+                        Clear = 6;
+                        PlayerPrefs.SetInt("Clear", Clear);
+                    }
                 }
 
                 Delete();

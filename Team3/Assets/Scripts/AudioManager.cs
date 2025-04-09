@@ -7,11 +7,13 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip normalClip;
+    public AudioClip hellClip;
 
     public bool hasStarted = false;
+    public bool isHell = false;
 
-    public void Awake()
+    public void Awake() //ΩÃ±€≈Ê ∆–≈œ
     {
         if(instance == null)
         {
@@ -29,15 +31,16 @@ public class AudioManager : MonoBehaviour
         if (!hasStarted)
         {
             audioSource = GetComponent<AudioSource>();
-            audioSource.clip = this.audioClip;
+            audioSource.clip = normalClip;
             audioSource.loop = true;
 
             if (!audioSource.isPlaying)
             {
+                audioSource.clip = normalClip;
                 audioSource.Play();
-            }
 
-            hasStarted = true;
+                hasStarted = true;
+            }
         }
     }
 
@@ -68,5 +71,30 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.Play();
         }
+    }
+
+    public void SwitchMusic(bool toHellMode)
+    {
+        if (audioSource == null) return;
+
+        AudioClip targetClip = toHellMode ? hellClip : normalClip;
+
+        if (audioSource.clip == targetClip)
+        {
+            return;
+        }
+
+        isHell = toHellMode;
+        audioSource.Stop();
+        audioSource.clip = targetClip;
+        audioSource.pitch = 1.0f;
+        audioSource.Play();
+
+        Debug.Log("BGM ¿¸»Ø");
+    }
+
+    public bool IsHellMode()
+    {
+        return isHell;
     }
 }

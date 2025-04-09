@@ -765,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4526372185316418653
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1304,6 +1304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easyanim: {fileID: 883381875927513563}
   hardanim: {fileID: 2783010048223443420}
+  anim1: {fileID: 8873909846762716632}
+  anim2: {fileID: 7291112723839968565}
+  anim3: {fileID: 1200658961590031483}
   closeSpeed: 0.5
 --- !u!95 &2783010048223443420
 Animator:
@@ -1821,6 +1824,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easyanim: {fileID: 883381875927513563}
   hardanim: {fileID: 2783010048223443420}
+  anim1: {fileID: 8873909846762716632}
+  anim2: {fileID: 7291112723839968565}
+  anim3: {fileID: 1200658961590031483}
   closeSpeed: 1
 --- !u!95 &883381875927513563
 Animator:
