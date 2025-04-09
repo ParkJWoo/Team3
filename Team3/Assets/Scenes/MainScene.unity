@@ -832,10 +832,10 @@ MonoBehaviour:
   st2Btnimg: {fileID: 28340409}
   st3Btnimg: {fileID: 1434143517}
   timeTxt: {fileID: 1843043302}
-  time: 60
+  time: 5
   isGamePlaying: 0
   cardCount: 0
-  Clear: 0
+  Clear: 4
   stage: 0
   level: 0
   score: 0

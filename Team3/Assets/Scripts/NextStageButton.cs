@@ -35,11 +35,11 @@ public class NextStageButton : MonoBehaviour
         Debug.Log(GameManager.instance.stage);
         Debug.Log(GameManager.instance.cardCount);
 
+        GameManager.instance.board.gameObject.SetActive(true);
         GameManager.instance.board.Start();
 
         Debug.Log(GameManager.instance.time);
 
-        GameManager.instance.board.gameObject.SetActive(true);
         GameManager.instance.timeTxt.gameObject.SetActive(true);
     }
 }

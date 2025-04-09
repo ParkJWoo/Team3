@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UIImg = UnityEngine.UI.Image;
 
+using UnityEngineInternal;
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -140,16 +143,6 @@ public class GameManager : MonoBehaviour
             hiddenBtn.SetActive(false);
         }
 
-
-
-
-
-
-
-
-
-
-
         //카드게임 시작시
         if (!isGamePlaying)
         {
@@ -183,6 +176,7 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
             //time = 60.0f;
+            board.gameObject.SetActive(false);
         }
 
         if (cardCount <= 0 && level == 1)
@@ -198,8 +192,17 @@ public class GameManager : MonoBehaviour
             {
                 AudioManager.instance.SwitchMusic(false);
             }
-
+            board.gameObject.SetActive(false);
             return;
+        }
+
+        if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
+        {
+            timeTxt.gameObject.SetActive(false);
+
+            GameClear(stage);
+
+            Delete();
         }
 
     }
@@ -224,77 +227,18 @@ public class GameManager : MonoBehaviour
                 secondCard.DestroyCard(1f);
             }
 
-            if (secondCard.idx == 8)
-            {
-                firstCard.DestroyCard(0f);
-                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
-                secondCard.transform.position = new Vector2(0, 0);
-                secondCard.DestroyCard(3f);
-            }
-
-            else
-            {
-                firstCard.DestroyCard(1f);
-                secondCard.DestroyCard(1f);
-            }
-
             cardCount -= 2;
 
-            if (cardCount == 0 && level == 1 || cardCount == 0 && level >=2 )
+            score++;
+
+            if (level == 2)
             {
-                board.gameObject.SetActive(false);
-                timeTxt.gameObject.SetActive(false);
-
-                if (stage == 1)                                        //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                if (cardCount == 0)
                 {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 1;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 4;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
+                    Invoke("ReBoard", 1f);
+                    Debug.Log("score: " + score);
                 }
-                else if (stage == 2)                                   //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
-                {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 2;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 5;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                }
-                else if (stage == 3)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
-                {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 3;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 6;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                }
-
-                Delete();
-                score++;
             }
-
         }
         else
         {
@@ -305,28 +249,37 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (level == 2)
-        {
-            if (cardCount == 0)
-            {
-                Invoke("ReBoard", 1f);
-                Debug.Log("score: " + score);
-            }
-        }
-
         firstCard = null;
         secondCard = null;
     }
+
+    public void GameClear(int _stage) // 게임이 끝났을 경우
+    {
+        nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+        int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
+        Time.timeScale = 0.0f;
+
+        if (level == 1)
+        {
+            Clear = _stage;
+        }
+        else if (level == 2)
+        {
+            Clear = _stage + 3;
+        }
+        
+        if(pastStage < _stage)
+        PlayerPrefs.SetInt("Clear", Clear);
+    }
+
 
     public void Delete()                                                //  스테이지 종료 후, 기존의 스테이지 데이터 초기화 → 다음 스테이지의 데이터를 새로 받아오기 위한 정리 함수
     {
         Debug.Log("이전 스테이지 정보 삭제");
         cardCount = 0;
-        //stage = 0;
         Time.timeScale = 1f;
         time = 0.0f;
         timeTxt.text = time.ToString("N2");
-        //board.Delete();
     }
 
     private void ReBoard()
