@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     // 스테이지 클리어 여부 판단.
     public int Clear = 0;
 
+    public bool isGhost = false;
+
     public int stage = 0;
     public int level = 0;
     public int score = 0;
@@ -208,14 +210,16 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-
         if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
 
             if (secondCard.idx == 8)
             {
+                isGhost = true;
                 firstCard.DestroyCard(0f);
+
+                secondCard.shouldTurnOffGhost = true;
                 secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
                 secondCard.transform.position = new Vector2(0, 0);
                 secondCard.DestroyCard(3f);
