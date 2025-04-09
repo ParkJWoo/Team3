@@ -13,6 +13,8 @@ public class HellStart : MonoBehaviour
 
     public void LetHellStart()
     {
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
         AudioManager.instance.PlayClickSound(true);
 
         GameManager.instance.stage = 4;
@@ -28,10 +30,6 @@ public class HellStart : MonoBehaviour
 
             GameManager.instance.time = 30f;
             GameManager.instance.isGamePlaying = true;
-
-            AudioManager.instance.ResetSpeed();
-            AudioManager.instance.StopTickSfx();
-            AudioManager.instance.PlayMusic();
         }
     }
 }

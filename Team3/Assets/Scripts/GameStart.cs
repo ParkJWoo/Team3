@@ -13,6 +13,9 @@ public class GameStart : MonoBehaviour
     public void LetGameStart()
     {
         AudioManager.instance.PlayClickSound(true);
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
+        AudioManager.instance.PlayMusic();
 
         if (GameManager.instance.level == 1)
         {
@@ -23,12 +26,8 @@ public class GameStart : MonoBehaviour
                 GameManager.instance.board.gameObject.SetActive(true);
                 GameManager.instance.timeTxt.gameObject.SetActive(true);
 
-                GameManager.instance.time = 60.0f;
-                GameManager.instance.isGamePlaying = true;
-                AudioManager.instance.ResetSpeed();
-                AudioManager.instance.StopTickSfx();
-                AudioManager.instance.PlayMusic();
-
+                GameManager.instance.time = 60.0f; // 타이머 초기화
+                GameManager.instance.isGamePlaying = true; // 게임 시작상태
             }
             
         }
@@ -40,11 +39,8 @@ public class GameStart : MonoBehaviour
             GameManager.instance.board.gameObject.SetActive(true);
             GameManager.instance.timeTxt.gameObject.SetActive(true);
 
-            GameManager.instance.time = 10.0f;
-            GameManager.instance.isGamePlaying = true;
-            AudioManager.instance.ResetSpeed();
-            AudioManager.instance.StopTickSfx();
-            AudioManager.instance.PlayMusic();
+            GameManager.instance.time = 10.0f; // 타이머 초기화
+            GameManager.instance.isGamePlaying = true; // 게임 시작상태
         }
     }
 }

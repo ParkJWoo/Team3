@@ -9,6 +9,9 @@ public class Exit : MonoBehaviour
     public void GameEnd()
     {
         AudioManager.instance.PlayClickSound();
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
+
         anim.SetBool("isClick", true);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
