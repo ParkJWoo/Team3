@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Card firstCard;
     public Card secondCard;
+    public Card etcCard;
     public Board board;
 
 
@@ -101,12 +102,11 @@ public class GameManager : MonoBehaviour
 
         if (time <= 0.0f && cardCount != 0)
         {
-            failPanel.SetActive(true);
+            //failPanel.SetActive(true);
             Time.timeScale = 0.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
-
             //time = 60.0f;
         }
 
@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
 
             return;
         }
+<<<<<<< Updated upstream
 
 
 
@@ -151,13 +152,29 @@ public class GameManager : MonoBehaviour
                 secondCard.DestroyCard(1f);
             }
 
+            if (secondCard.idx == 8)
+            {
+                firstCard.DestroyCard(0f);
+                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
+                secondCard.transform.position = new Vector2(0, 0);
+                secondCard.DestroyCard(3f);
+            }
+
+            else
+            {
+                firstCard.DestroyCard(1f);
+                secondCard.DestroyCard(1f);
+            }
+>>>>>>> Stashed changes
+
             cardCount -= 2;
 
-            if (cardCount == 0 && level == 1)
+            if (cardCount == 0 && level == 1 || cardCount == 0 && level >=2 )
             {
                 board.gameObject.SetActive(false);
                 timeTxt.gameObject.SetActive(false);
-                if (stage == 1)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+
+                if (stage == 1)                                        //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
@@ -172,7 +189,7 @@ public class GameManager : MonoBehaviour
                         PlayerPrefs.SetInt("Clear", Clear);
                     }
                 }
-                else if (stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
+                else if (stage == 2)                                   //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
