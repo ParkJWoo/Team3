@@ -837,7 +837,7 @@ MonoBehaviour:
   st2Btnimg: {fileID: 28340409}
   st3Btnimg: {fileID: 1434143517}
   timeTxt: {fileID: 1843043302}
-  time: 5
+  time: 60
   isGamePlaying: 0
   cardCount: 0
   Clear: 0
@@ -1359,14 +1359,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 534668923}
     m_Modifications:
-    - target: {fileID: 1418293893711219654, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
-      propertyPath: m_Text
-      value: "\uBB34\uD55C \uBAA8\uB4DC"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4568379684862032455, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
-      propertyPath: m_Text
-      value: "\uD788\uB4E0 \uBAA8\uB4DC"
-      objectReference: {fileID: 0}
     - target: {fileID: 5967713985298481581, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
       propertyPath: m_Name
       value: LevelPanel
@@ -1450,10 +1442,6 @@ PrefabInstance:
     - target: {fileID: 7827662014630680391, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8525152301084672425, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
-      propertyPath: m_Text
-      value: "\uAE30\uBCF8 \uBAA8\uB4DC"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

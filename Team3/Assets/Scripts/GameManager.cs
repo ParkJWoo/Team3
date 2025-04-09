@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public int stage = 0;
     public int level = 0;
     public int score = 0;
+    public int bestScore = 0;
 
     private void Awake()
     {
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Clear"))
         {
             Clear = PlayerPrefs.GetInt("Clear");
+        }
+
+        if (PlayerPrefs.HasKey("bestScore"))
+        {
+            bestScore = PlayerPrefs.GetInt("bestScore");
         }
 
         board.gameObject.SetActive(false);
@@ -114,7 +120,7 @@ public class GameManager : MonoBehaviour
 
                 }
         }
-        else if (level == 2)
+        /*else if (level == 2)
         {
             if (Clear < 6)                                      //어려움모드를 모두 클리어하지않았을때
             {
@@ -132,10 +138,10 @@ public class GameManager : MonoBehaviour
                     break;
 
             }
-        }
+        }*/
 
 
-        if (Clear >= 6f)                        //히든버튼 어려움스테3까지 클리어했을때 보임
+        if (score >= 20f)                        //히든버튼 무한모드 점수10이상시 보임
         {
             hiddenBtn.SetActive(true);
         }
@@ -200,7 +206,7 @@ public class GameManager : MonoBehaviour
         {
             timeTxt.gameObject.SetActive(false);
 
-            GameClear(stage);
+            GameClear(stage,score);
 
             Delete();
         }
@@ -228,14 +234,15 @@ public class GameManager : MonoBehaviour
 
             cardCount -= 2;
 
-            score++;
-
+            
             if (level == 2)
             {
+                score++;
                 if (cardCount == 0)
                 {
                     Invoke("ReBoard", 1f);
                     Debug.Log("score: " + score);
+                    
                 }
             }
         }
@@ -250,10 +257,11 @@ public class GameManager : MonoBehaviour
         secondCard = null;
     }
 
-    public void GameClear(int _stage) // 게임이 끝났을 경우
+    public void GameClear(int _stage,int _score) // 게임이 끝났을 경우
     {
         //nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
 
+        int pastBestScore = PlayerPrefs.GetInt("bestScore", bestScore); // 무한모드 최고점수
         int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
         Time.timeScale = 0.0f;
 
@@ -285,6 +293,13 @@ public class GameManager : MonoBehaviour
         {
             Clear = _stage + 3;
             board.OnDisable();
+
+            if (score >= pastBestScore)
+            {
+                PlayerPrefs.SetInt("bestScore", score);  
+                PlayerPrefs.Save(); 
+                Debug.Log("최고 점수 저장됨: " + score);
+            }
         }
 
         if (pastStage < _stage)
@@ -295,11 +310,15 @@ public class GameManager : MonoBehaviour
 
     public void Delete()                                                //  스테이지 종료 후, 기존의 스테이지 데이터 초기화 → 다음 스테이지의 데이터를 새로 받아오기 위한 정리 함수
     {
-        Debug.Log("이전 스테이지 정보 삭제");
+       
         cardCount = 0;
         Time.timeScale = 1f;
         time = 0.0f;
         timeTxt.text = time.ToString("N2");
+        if (level == 2)
+        {
+            score = 0;  // 무한모드 점수 초기화
+        }
     }
 
     private void ReBoard()
