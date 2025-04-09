@@ -161,16 +161,16 @@ public class GameManager : MonoBehaviour
         if (stage == 4 && !AudioManager.instance.IsHellMode())
         {
             AudioManager.instance.SwitchMusic(true);
+            AudioManager.instance.StopTickSfx();
         }
 
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        //if (time >= 30.0f)
-        //{
-        //    failPanel.SetActive(true);
-        //    Time.timeScale = 0.0f;
-        //}
+        if (AudioManager.instance.audioSource.pitch == 1.0f && AudioManager.instance.SFXSource.isPlaying)
+        {
+            AudioManager.instance.StopTickSfx();
+        }
 
         if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
         {
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.SwitchMusic(false);
-            AudioManager.instance.StopTickSfx();
+            AudioManager.instance.StopTickSfx(); // ½ÇÆÐÇØµµ tick²¨ÁÜ
             isGamePlaying = false;
             board.gameObject.SetActive(false);
         }
@@ -192,8 +192,8 @@ public class GameManager : MonoBehaviour
         if (cardCount <= 0 && level == 1)
         {//°ÔÀÓ ³¡³­ Á¶°Ç È®ÀÎ
             isGamePlaying = false;
-            AudioManager.instance.ResetSpeed(); //¿ø»óº¹±Í
-            AudioManager.instance.StopTickSfx();
+            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.StopTickSfx(); // Å¬¸®¾îÇØµµ tick²¨ÁÜ
 
             if (stage == 4)
             {

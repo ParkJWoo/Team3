@@ -30,5 +30,9 @@ public class RetryButton : MonoBehaviour
 
         GameManager.instance.board.Start();
         GameManager.instance.isGamePlaying = true;
+
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
+        AudioManager.instance.PlayMusic();
     }
 }

@@ -154,14 +154,13 @@ public class AudioManager : MonoBehaviour
         //if (SFXSource == null)
         //{Debug.LogWarning("[AudioManager] sfxSource √ ±‚»≠ æ»µ "); return;}
 
-        if (!SFXSource.isPlaying)
-        {
-            SFXSource.clip = tickSfx;
-            SFXSource.loop = true;
-            SFXSource.pitch = 1.0f;
-            SFXSource.volume = sfxVolume;
-            SFXSource.Play();
-        }
+        if(SFXSource == null || SFXSource.isPlaying) return;
+
+        SFXSource.clip = tickSfx;
+        SFXSource.loop = true;
+        SFXSource.pitch = 1.0f;
+        SFXSource.volume = sfxVolume;
+        SFXSource.Play();
     }
 
     public void StopTickSfx()
