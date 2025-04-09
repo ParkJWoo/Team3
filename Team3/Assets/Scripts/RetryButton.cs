@@ -14,10 +14,14 @@ public class RetryButton : MonoBehaviour
         Debug.Log("retrybutton");
         AudioManager.instance.PlayClickSound();
 
-        GameManager.instance.time = 60.0f; // 타이머 초기화
+        GameManager.instance.time = 20.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
 
         GameManager.instance.failPanel.SetActive(false);
+
+        GameManager.instance.infinityPanel.SetActive(false);
+
+        GameManager.instance.score = 0;
 
         GameManager.instance.board.gameObject.SetActive(true);
         GameManager.instance.timeTxt.gameObject.SetActive(true);
