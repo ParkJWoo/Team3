@@ -32,6 +32,14 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void OnDisable()
+    {
+        foreach (Transform child in this.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
+
     public void Stage1BoardArrangement() //  스테이지 선택창에서 선택한 스테이지 데이터 기반으로 카드 배치하는 함수
     {
         Debug.Log(GameManager.instance.stage);
@@ -56,7 +64,7 @@ public class Board : MonoBehaviour
     public void Stage2BoardArrangement()
     {
         //List<int> cardArr = RandomCardImg(4);
-        cardArr = RandomCardImg(2);
+        cardArr = RandomCardImg(4);
 
         for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
