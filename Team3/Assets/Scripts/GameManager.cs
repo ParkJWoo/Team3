@@ -101,19 +101,31 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+       
+
     }
 
     public void Matched()
     {
+        
         if (firstCard.idx == secondCard.idx)
         {
-            
             audioSource.PlayOneShot(clip);
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
+
+            if (secondCard.idx == 8)
+            {
+                firstCard.DestroyCard(1f);
+                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
+                secondCard.transform.position = new Vector2(0, 0);
+                secondCard.DestroyCard(3f);
+            }
+            else
+            {
+                firstCard.DestroyCard(1f);
+                secondCard.DestroyCard(1f);
+            }
 
             cardCount -= 2;
-
             if (cardCount == 0)
             {
                 board.gameObject.SetActive(false);

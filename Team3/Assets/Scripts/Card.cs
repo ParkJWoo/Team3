@@ -50,10 +50,10 @@ public class Card : MonoBehaviour
         }
     }
 
-    public void DestroyCard()
+    public void DestroyCard(float time)
     {
         anim.SetBool("isMatch",true);
-        Invoke("DestroyCardInvoke", 1f);
+        Invoke("DestroyCardInvoke", time);
     }
 
     void DestroyCardInvoke()
