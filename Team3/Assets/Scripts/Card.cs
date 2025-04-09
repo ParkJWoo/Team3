@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        GameManager.instance.isGhost = false;
     }
 
     public void Setting(int number) // number을 받아서 sprite를 가져 온다.
