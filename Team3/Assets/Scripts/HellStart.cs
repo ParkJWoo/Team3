@@ -9,16 +9,16 @@ public class HellStart : MonoBehaviour
     public float closeSpeed;
     public int stage;
     public int cardCount;
-    
+
 
     public void LetHellStart()
     {
         GameManager.instance.stage = 4;
         GameManager.instance.cardCount = cardCount;
         GameManager.instance.level = 1;
-        
-        if (GameManager.instance.stage != 0 && GameManager.instance.closeSpeed != 0)
-        {            
+
+        if (GameManager.instance.stage != 0 && GameManager.instance.level != 0)
+        {
             Debug.Log("BGM2");
             
             anim.SetBool("isClick", true);
