@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         //}
 
         if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
-        {//남은 시간이 20초 이하일 때, 오디오 속도 증가
+        {
             AudioManager.instance.SetSpeed(1.5f);
         }
 
@@ -85,16 +85,18 @@ public class GameManager : MonoBehaviour
         {
             failPanel.SetActive(true);
             Time.timeScale = 0.0f;
-            AudioManager.instance.ResetSpeed(); //원상복귀
+            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.SwitchMusic(AudioManager.instance.normalClip, false);
             isGamePlaying = false;
 
             //time = 60.0f;
         }
 
         if (cardCount <= 0)
-        {//게임 끝난 조건 확인
+        {
             isGamePlaying = false;
-            AudioManager.instance.ResetSpeed(); //원상복귀
+            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.SwitchMusic(AudioManager.instance.normalClip, false);
             //Time.timeScale = 1.0f;
             //time = 60.0f;
             //timeTxt.text = time.ToString("N2");
