@@ -13,7 +13,7 @@ public class HellStart : MonoBehaviour
 
     public void LetHellStart()
     {
-        GameManager.instance.stage = stage;
+        GameManager.instance.stage = 4;
         GameManager.instance.cardCount = cardCount;
         GameManager.instance.closeSpeed = closeSpeed;
         

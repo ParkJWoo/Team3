@@ -818,9 +818,7 @@ MonoBehaviour:
   time: 60
   isGamePlaying: 0
   cardCount: 0
-  isClear_1: 0
-  isClear_2: 0
-  isClear_3: 0
+  Clear: 0
   stage: 0
   closeSpeed: 1
 --- !u!4 &1345052099
@@ -1344,7 +1342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 449}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843043302
