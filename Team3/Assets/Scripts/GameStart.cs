@@ -15,6 +15,7 @@ public class GameStart : MonoBehaviour
 
         if (GameManager.instance.stage != 0 && GameManager.instance.level != 0)
         {
+            AudioManager.instance.PlayClickSound(true);
             anim.SetBool("isClick", true);
             levelPanel.SetActive(false);
             GameManager.instance.board.gameObject.SetActive(true);

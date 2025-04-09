@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,10 @@ public class AudioManager : MonoBehaviour
 
     public bool hasStarted = false;
     public bool isHell = false;
+
+    public AudioSource clickSource;
+    public AudioClip defaultClick;
+    public AudioClip startClick;
 
     public void Awake()
     {
@@ -35,8 +40,12 @@ public class AudioManager : MonoBehaviour
             SFXSource = sfxObject.AddComponent<AudioSource>();
             SFXSource.playOnAwake = false;
             SFXSource.loop = true;
-        }
 
+            //click 효과음소스
+            GameObject clickObject = new GameObject("ClickSFXSource");
+            clickObject.transform.parent = this.transform;
+            clickSource = clickObject.AddComponent<AudioSource>();
+        }
         else
         {
             Destroy(gameObject);
@@ -47,7 +56,6 @@ public class AudioManager : MonoBehaviour
     {
         if (!hasStarted)
         {
-            audioSource = GetComponent<AudioSource>();
             audioSource.clip = normalClip;
             audioSource.loop = true;
 
@@ -57,6 +65,16 @@ public class AudioManager : MonoBehaviour
                 hasStarted = true;
             }
         }
+    }
+
+    public void PlayClickSound(bool isStart = false)
+    {
+        if (clickSource == null) return;
+
+        AudioClip clipToPlay = isStart ? startClick : defaultClick;
+        clickSource.pitch = 1.0f;
+        clickSource.loop = false;
+        clickSource.PlayOneShot(clipToPlay);
     }
 
     public void SetSpeed(float speed)

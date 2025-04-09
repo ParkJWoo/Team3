@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         {//게임 끝난 조건 확인
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed(); //원상복귀
-            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.StopTickSfx();
 
             if (stage == 4)
             {
