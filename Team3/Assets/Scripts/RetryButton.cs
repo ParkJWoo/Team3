@@ -13,17 +13,22 @@ public class RetryButton : MonoBehaviour
 
         Debug.Log("retrybutton");
 
-        GameManager.instance.time = 60.0f; // 타이머 초기화
+        GameManager.instance.time = 10.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
 
-        GameManager.instance.failPanel.SetActive(false);
+        GameManager.instance.score = 0;
+
+
+        if (GameManager.instance.hardPanel == true)
+        {
+            GameManager.instance.hardPanel.SetActive(false);
+        }
 
         GameManager.instance.board.gameObject.SetActive(true);
         GameManager.instance.timeTxt.gameObject.SetActive(true);
 
         if (GameManager.instance.failPanel == true)
         {
-            Debug.Log("실패 판넬 켜짐");
             GameManager.instance.failPanel.SetActive(false);
         }
 

@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public Card etcCard;
     public Board board;
 
-
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip wrongClip;
@@ -25,6 +24,11 @@ public class GameManager : MonoBehaviour
     public GameObject clearPanel; // 최종 스테이지 클리어 시 나오는 팀원 정보 판넬
     public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
+<<<<<<< Updated upstream
+=======
+    public GameObject hiddenPanel; // 히든 스테이지 클리어 시 나오는 판넬
+    public GameObject hardPanel;  // 무한 모드 결과 판넬
+>>>>>>> Stashed changes
 
     public GameObject hiddenBtn;
     public GameObject hardBtn;
@@ -33,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
     public float time = 60.0f;
+    public Text nowScore;          // 무한 모드에서 띄울 점수 Text 변수
+    public Text nowPanelScore;
+    public Text bestPanelScore;
+    public int bestScore;
 
     public bool isGamePlaying = false; //게임 시작 여부 판단
 
@@ -43,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public int stage = 0;
     public int level = 0;
-    public int score = 0;
+    public int score = 0;              // 무한 모드에서 띄울 점수 
 
     private void Awake()
     {
@@ -226,16 +234,19 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
 
             score++;
+            nowScore.text = score.ToString();
 
             if (level == 2)
             {
                 if (cardCount == 0)
                 {
                     Invoke("ReBoard", 1f);
-                    Debug.Log("score: " + score);
+                    //Debug.Log("score: " + score);
                 }
             }
+
         }
+
         else
         {
             audioSource.PlayOneShot(wrongClip);
@@ -253,14 +264,97 @@ public class GameManager : MonoBehaviour
         int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
         Time.timeScale = 0.0f;
 
+<<<<<<< Updated upstream
+=======
+        //if(stage >= 0 && stage <= 2)
+        //{
+        //    nextPanel.SetActive(true);
+        //}
+
+        //else if(stage == 3)
+        //{
+        //    clearPanel.SetActive(true);
+        //}
+
+        if (stage == 4)
+        {
+            hiddenPanel.SetActive(true);
+        }
+
+>>>>>>> Stashed changes
         if (level == 1)
         {
+            if (stage >= 0 && stage <= 2)
+            {
+                nextPanel.SetActive(true);
+            }
+
+            else if (stage == 3)
+            {
+                clearPanel.SetActive(true);
+            }
+
             Clear = _stage;
         }
         else if (level == 2)
         {
             Clear = _stage + 3;
             board.OnDisable();
+
+            if (stage >= 0 && stage <= 2)
+            {
+                PlayerPrefs.SetInt("bestPanelScore", score);
+
+                if (PlayerPrefs.HasKey("bestPanelScore"))
+                {
+
+                    int currentBestScore = PlayerPrefs.GetInt("bestPanelScore");
+
+                    if (currentBestScore >= score)
+                    {
+                        //Debug.Log("현재 점수가 최고 점수보다 클 때");
+
+                        //Debug.Log(score);
+
+                        currentBestScore = score;
+
+                        PlayerPrefs.SetInt("bestPanelScore", currentBestScore);
+                        PlayerPrefs.SetInt("nowPanelScore", score);
+
+                        bestPanelScore.text = currentBestScore.ToString();
+                        nowPanelScore.text = score.ToString();
+                    }
+
+                    else
+                    {
+                        Debug.Log("현재 점수가 최고 점수보다 작을 때");
+
+                        PlayerPrefs.GetInt("bestPanelScore", currentBestScore);
+                        PlayerPrefs.SetInt("nowPanelScore", score);
+                       
+                        bestPanelScore.text = PlayerPrefs.GetInt("bestPanelScore").ToString();
+                        nowPanelScore.text = score.ToString();
+                    }
+                }
+
+                else
+                {
+                    Debug.Log("bestPanelScore 없을 때 나오는 함수");
+
+                    PlayerPrefs.SetInt("bestPanelScore", score);
+
+                    bestPanelScore.text = PlayerPrefs.GetInt("bestPanelScore").ToString();
+                    nowPanelScore.text = score.ToString();
+                }
+
+                hardPanel.SetActive(true);
+            }
+
+            else if (stage == 3)
+            {
+                clearPanel.SetActive(true);
+                //nowScore.text = score.ToString();
+            }
         }
 
         if (pastStage < _stage)
@@ -271,7 +365,7 @@ public class GameManager : MonoBehaviour
 
     public void Delete()                                                //  스테이지 종료 후, 기존의 스테이지 데이터 초기화 → 다음 스테이지의 데이터를 새로 받아오기 위한 정리 함수
     {
-        Debug.Log("이전 스테이지 정보 삭제");
+        //Debug.Log("이전 스테이지 정보 삭제");
         cardCount = 0;
         Time.timeScale = 1f;
         time = 0.0f;

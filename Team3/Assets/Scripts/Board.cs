@@ -42,7 +42,7 @@ public class Board : MonoBehaviour
 
     public void Stage1BoardArrangement() //  스테이지 선택창에서 선택한 스테이지 데이터 기반으로 카드 배치하는 함수
     {
-        Debug.Log(GameManager.instance.stage);
+        //Debug.Log(GameManager.instance.stage);
 
         //List<int> cardArr = RandomCardImg(2);
         cardArr = RandomCardImg(2);
