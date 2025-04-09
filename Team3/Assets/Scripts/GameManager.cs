@@ -119,9 +119,6 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.SwitchMusic(false);
             }
 
-            //Time.timeScale = 1.0f;
-            //time = 60.0f;
-            //timeTxt.text = time.ToString("N2");
             return;
         }
 

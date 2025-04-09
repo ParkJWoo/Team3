@@ -30,7 +30,6 @@ public class HellStart : MonoBehaviour
             GameManager.instance.isGamePlaying = true;
 
             AudioManager.instance.ResetSpeed();
-            //AudioManager.instance.SwitchMusic(true);
         }
     }
 }

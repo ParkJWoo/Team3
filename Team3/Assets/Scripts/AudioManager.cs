@@ -89,8 +89,6 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = targetClip;
         audioSource.pitch = 1.0f;
         audioSource.Play();
-
-        Debug.Log("BGM ÀüÈ¯");
     }
 
     public bool IsHellMode()
