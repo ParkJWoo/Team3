@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
             if (secondCard.idx == 8)
             {
-                firstCard.DestroyCard(1f);
+                firstCard.DestroyCard(0f);
                 secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
                 secondCard.transform.position = new Vector2(0, 0);
                 secondCard.DestroyCard(3f);
