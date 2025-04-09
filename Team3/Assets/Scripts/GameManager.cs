@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngineInternal;
 
 public class GameManager : MonoBehaviour
 {
@@ -128,6 +129,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
+        {
+            timeTxt.gameObject.SetActive(false);
+
+            GameClear(stage);
+
+            Delete();
+        }
+
     }
 
     public void Matched()
@@ -152,60 +162,6 @@ public class GameManager : MonoBehaviour
 
             cardCount -= 2;
 
-            if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
-            {
-                timeTxt.gameObject.SetActive(false);
-
-                if (stage == 1)                                        //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
-                {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 1;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 4;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                }
-                else if (stage == 2)                                   //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
-                {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 2;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 5;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                }
-                else if (stage == 3)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
-                {
-                    nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
-                    Time.timeScale = 0.0f;
-                    if (level == 1)
-                    {
-                        Clear = 3;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                    else
-                    {
-                        Clear = 6;
-                        PlayerPrefs.SetInt("Clear", Clear);
-                    }
-                }
-
-                Delete();
-             
-            }
-
             score++;
 
             if (level == 2)
@@ -229,6 +185,26 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
     }
+
+    public void GameClear(int _stage) // 게임이 끝났을 경우
+    {
+        nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+        int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
+        Time.timeScale = 0.0f;
+
+        if (level == 1)
+        {
+            Clear = _stage;
+        }
+        else if (level == 2)
+        {
+            Clear = _stage + 3;
+        }
+        
+        if(pastStage < _stage)
+        PlayerPrefs.SetInt("Clear", Clear);
+    }
+
 
     public void Delete()                                                //  스테이지 종료 후, 기존의 스테이지 데이터 초기화 → 다음 스테이지의 데이터를 새로 받아오기 위한 정리 함수
     {
