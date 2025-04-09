@@ -8,6 +8,7 @@ public class Exit : MonoBehaviour
     // Start is called before the first frame update
     public void GameEnd()
     {
+        AudioManager.instance.PlayClickSound();
         anim.SetBool("isClick", true);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

@@ -415,11 +415,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   normalClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
-  hellClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  hellClip: {fileID: 8300000, guid: d36768264dc794d439f35759f5447e97, type: 3}
   SFXSource: {fileID: 0}
   tickSfx: {fileID: 8300000, guid: 2dd9f8bf24d420f44960ed777e89db3a, type: 3}
   hasStarted: 0
   isHell: 0
+  clickSource: {fileID: 0}
+  defaultClick: {fileID: 8300000, guid: 1a88f20133fe0be48bc3172d9b77a213, type: 3}
+  startClick: {fileID: 8300000, guid: 0c85e1eaf854fa1419f3362c3920f17c, type: 3}
+  bgmVolume: 0.2
+  sfxVolume: 1
+  clickVolume: 0.2
 --- !u!82 &685488905
 AudioSource:
   m_ObjectHideFlags: 0
@@ -432,7 +438,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

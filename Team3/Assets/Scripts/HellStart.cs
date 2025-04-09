@@ -13,14 +13,14 @@ public class HellStart : MonoBehaviour
 
     public void LetHellStart()
     {
+        AudioManager.instance.PlayClickSound(true);
+
         GameManager.instance.stage = 4;
         GameManager.instance.cardCount = cardCount;
         GameManager.instance.level = 1;
 
         if (GameManager.instance.stage != 0 && GameManager.instance.level != 0)
         {
-            Debug.Log("BGM2");
-            
             anim.SetBool("isClick", true);
             levelPanel.SetActive(false);
             GameManager.instance.board.gameObject.SetActive(true);

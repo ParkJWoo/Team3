@@ -15,6 +15,8 @@ public class Card : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
 
+    public bool shouldTurnOffGhost = false;
+
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -29,6 +31,8 @@ public class Card : MonoBehaviour
     public void OpenCard() // Ä«µå¸¦ ¿ÀÇÂ
     {
         if (GameManager.instance.secondCard != null) return;
+
+        if (GameManager.instance.isGhost == true) return;
 
         anim.SetBool("isClick", true);
         front.SetActive(true);
@@ -59,6 +63,10 @@ public class Card : MonoBehaviour
     void DestroyCardInvoke()
     {
         Destroy(gameObject);
+        if (shouldTurnOffGhost && GameManager.instance != null)
+        {
+            GameManager.instance.isGhost = false;
+        }
     }
 
     public void CloseCard()

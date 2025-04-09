@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,14 @@ public class AudioManager : MonoBehaviour
 
     public bool hasStarted = false;
     public bool isHell = false;
+
+    public AudioSource clickSource;
+    public AudioClip defaultClick;
+    public AudioClip startClick;
+
+    [Range(0f, 1f)] public float bgmVolume;
+    [Range(0f, 1f)] public float sfxVolume;
+    [Range(0f, 1f)] public float clickVolume;
 
     public void Awake()
     {
@@ -35,8 +44,12 @@ public class AudioManager : MonoBehaviour
             SFXSource = sfxObject.AddComponent<AudioSource>();
             SFXSource.playOnAwake = false;
             SFXSource.loop = true;
-        }
 
+            //click 효과음소스
+            GameObject clickObject = new GameObject("ClickSFXSource");
+            clickObject.transform.parent = this.transform;
+            clickSource = clickObject.AddComponent<AudioSource>();
+        }
         else
         {
             Destroy(gameObject);
@@ -47,7 +60,6 @@ public class AudioManager : MonoBehaviour
     {
         if (!hasStarted)
         {
-            audioSource = GetComponent<AudioSource>();
             audioSource.clip = normalClip;
             audioSource.loop = true;
 
@@ -57,6 +69,36 @@ public class AudioManager : MonoBehaviour
                 hasStarted = true;
             }
         }
+    }
+
+    void Update()
+    {
+        if (audioSource != null)
+        {
+            audioSource.volume = bgmVolume;
+        }
+
+        if (SFXSource != null)
+        {
+            SFXSource.volume = sfxVolume;
+        }
+
+        if (clickSource != null)
+        {
+            clickSource.volume = clickVolume;
+        }
+    }
+
+
+    public void PlayClickSound(bool isStart = false)
+    {
+        if (clickSource == null) return;
+
+        AudioClip clipToPlay = isStart ? startClick : defaultClick;
+        clickSource.volume = clickVolume;
+        clickSource.pitch = 1.0f;
+        clickSource.loop = false;
+        clickSource.PlayOneShot(clipToPlay);
     }
 
     public void SetSpeed(float speed)
@@ -104,6 +146,7 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = targetClip;
         audioSource.pitch = 1.0f;
         audioSource.Play();
+        audioSource.volume = bgmVolume;
     }
 
     public void PlayTickSfx()
@@ -116,6 +159,7 @@ public class AudioManager : MonoBehaviour
             SFXSource.clip = tickSfx;
             SFXSource.loop = true;
             SFXSource.pitch = 1.0f;
+            SFXSource.volume = sfxVolume;
             SFXSource.Play();
         }
     }

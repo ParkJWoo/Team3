@@ -12,6 +12,7 @@ public class RetryButton : MonoBehaviour
         //anim.SetBool("isClick", true);
 
         Debug.Log("retrybutton");
+        AudioManager.instance.PlayClickSound();
 
         GameManager.instance.time = 60.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
