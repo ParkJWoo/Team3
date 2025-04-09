@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Android.Bluetooth;
+using Android.Media;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static System.Net.Mime.MediaTypeNames;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Card secondCard;
     public Board board;
 
-    
+
     AudioSource audioSource;
     public AudioClip clip;
     public AudioClip wrongClip;
@@ -133,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        
+
         if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
@@ -209,11 +213,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            
+
             audioSource.PlayOneShot(wrongClip);
             firstCard.CloseCard();
             secondCard.CloseCard();
-            
+
         }
 
         if (level == 2)
