@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UIImg = UnityEngine.UI.Image;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
 
     public GameObject hiddenBtn;
+    public GameObject hardBtn;
+    public UIImg st2Btnimg;
+    public UIImg st3Btnimg;
 
     public Text timeTxt;
     public float time = 60.0f;
@@ -64,8 +68,68 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Text hardbtnText = hardBtn.GetComponentInChildren<Text>();
+        if (Clear >= 3)
+        {
+            hardbtnText.text = "어려움";
+        }
+        else
+        {
+            hardbtnText.text = "어려움(잠김)";
+        }
 
-        if (Clear >= 6f)                        //어려움스테3까지 클리어했을때 보임
+        if (closeSpeed == 1f)
+        {
+            if (Clear < 3)                                      //쉬움모드를 모두 클리어하지않았을때
+            {
+                st2Btnimg.enabled = true;                       //잠금표시 보이게 초기화
+                st3Btnimg.enabled = true;
+            }
+            else
+            {
+                st2Btnimg.enabled = false;                       //모두 클리어했을때 열쇠이미지 없음
+                st3Btnimg.enabled = false;
+            }
+                switch (Clear)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        st2Btnimg.enabled = false;
+                        break;
+                    case 2:
+                        st2Btnimg.enabled = false;
+                        st3Btnimg.enabled = false;
+                        break;
+                    case 3:
+                        st2Btnimg.enabled = false;
+                        st3Btnimg.enabled = false;
+                        break;
+
+                }
+        }
+        else if (closeSpeed == 0.5f)
+        {
+            if (Clear < 6)                                      //어려움모드를 모두 클리어하지않았을때
+            {
+                st2Btnimg.enabled = true;                       //잠금표시 초기화
+                st3Btnimg.enabled = true;
+            }
+            switch (Clear)
+            {
+                case 4:
+                    st2Btnimg.enabled = false;
+                    break;
+                case 5:
+                    st2Btnimg.enabled = false;
+                    st3Btnimg.enabled = false;
+                    break;
+
+            }
+        }
+
+
+        if (Clear >= 6f)                        //히든버튼 어려움스테3까지 클리어했을때 보임
         {
             hiddenBtn.SetActive(true);
         }
@@ -74,6 +138,17 @@ public class GameManager : MonoBehaviour
             hiddenBtn.SetActive(false);
         }
 
+
+
+
+
+
+
+
+
+
+
+        //카드게임 시작시
         if (!isGamePlaying)
         {
             return;

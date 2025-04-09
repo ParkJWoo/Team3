@@ -13,8 +13,19 @@ public class LevelButton : MonoBehaviour
     public Animator anim3;
     public float closeSpeed;
 
+    public GameObject st1btn;
+    public GameObject st2btn;
+    public GameObject st3btn;
+    public GameObject startbtn;
+
+
     public void LevelBtn()
     { 
+        st1btn.SetActive(true);
+        st2btn.SetActive(true);
+        st3btn.SetActive(true);
+        startbtn.SetActive(false);
+
         GameManager.instance.closeSpeed = closeSpeed;
         GameManager.instance.stage = 0;                               //스테이지변수 초기화
         GameManager.instance.cardCount = 0;
