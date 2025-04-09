@@ -831,7 +831,7 @@ MonoBehaviour:
   clearPanel: {fileID: 997190244}
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
-  hiddenPane: {fileID: 0}
+  hiddenPanel: {fileID: 0}
   hiddenBtn: {fileID: 1464498807}
   hardBtn: {fileID: 1981104606}
   st2Btnimg: {fileID: 28340409}
@@ -840,7 +840,7 @@ MonoBehaviour:
   time: 5
   isGamePlaying: 0
   cardCount: 0
-  Clear: 4
+  Clear: 0
   stage: 0
   level: 0
   score: 0
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   hellClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   SFXSource: {fileID: 0}
   tickSfx: {fileID: 8300000, guid: 2dd9f8bf24d420f44960ed777e89db3a, type: 3}
-  hasStarted: 0
+  hasStarted: 1
   isHell: 0
 --- !u!4 &1510180060
 Transform:
@@ -1132,7 +1132,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2dd9f8bf24d420f44960ed777e89db3a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

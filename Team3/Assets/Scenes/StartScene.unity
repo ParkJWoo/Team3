@@ -417,7 +417,7 @@ MonoBehaviour:
   normalClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
   hellClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   SFXSource: {fileID: 0}
-  tickSfx: {fileID: 0}
+  tickSfx: {fileID: 8300000, guid: 2dd9f8bf24d420f44960ed777e89db3a, type: 3}
   hasStarted: 0
   isHell: 0
 --- !u!82 &685488905
