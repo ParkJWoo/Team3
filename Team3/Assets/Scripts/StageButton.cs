@@ -16,7 +16,6 @@ public class StageButton : MonoBehaviour
 
     public void StageBtn()
     {
-        startbtn.SetActive(true);
         //쉬움난이도 클리어한후 스테2버튼 클릭했을때 클리어가 4미만이면 못클릭
         switch (stage)
         {
@@ -70,6 +69,15 @@ public class StageButton : MonoBehaviour
         }
         GameManager.instance.stage = stage;
         GameManager.instance.cardCount = cardCount;
+
+        if (anim1.GetBool("isClick") || anim2.GetBool("isClick") || anim3.GetBool("isClick"))           //버튼이 하나라도 누른상태면 스타트버튼 보임
+        {
+            startbtn.SetActive(true);
+        }
+        else
+        {
+            startbtn.SetActive(false);
+        }
 
     }
 }

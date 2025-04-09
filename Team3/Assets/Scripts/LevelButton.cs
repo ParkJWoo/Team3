@@ -17,11 +17,14 @@ public class LevelButton : MonoBehaviour
     public GameObject st2Btn;
     public GameObject st3Btn;
 
+    public GameObject startBtn;
+
     public void LevelBtn()
     {
         st1Btn.SetActive(true);
         st2Btn.SetActive(true);
         st3Btn.SetActive(true);
+        startBtn.SetActive(false);
 
 
         GameManager.instance.level = level;

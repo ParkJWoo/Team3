@@ -1463,6 +1463,7 @@ MonoBehaviour:
   st1Btn: {fileID: 8091341740327954779}
   st2Btn: {fileID: 7196023408819644129}
   st3Btn: {fileID: 1618784907287624404}
+  startBtn: {fileID: 3642271853613352702}
 --- !u!95 &2783010048223443420
 Animator:
   serializedVersion: 5
@@ -1989,6 +1990,7 @@ MonoBehaviour:
   st1Btn: {fileID: 8091341740327954779}
   st2Btn: {fileID: 7196023408819644129}
   st3Btn: {fileID: 1618784907287624404}
+  startBtn: {fileID: 3642271853613352702}
 --- !u!95 &883381875927513563
 Animator:
   serializedVersion: 5
