@@ -814,6 +814,7 @@ MonoBehaviour:
   clearPanel: {fileID: 997190244}
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
+  hiddenBtn: {fileID: 1464498807}
   timeTxt: {fileID: 1843043302}
   time: 60
   isGamePlaying: 0
@@ -932,6 +933,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1464498807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6290027109758389100, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+  m_PrefabInstance: {fileID: 1758788755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510180057
 GameObject:
   m_ObjectHideFlags: 0
