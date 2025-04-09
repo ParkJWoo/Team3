@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
             //time = 60.0f;
+            board.gameObject.SetActive(false);
         }
 
         if (cardCount <= 0 && level == 1)
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
             {
                 AudioManager.instance.SwitchMusic(false);
             }
-
+            board.gameObject.SetActive(false);
             return;
         }
 
@@ -149,25 +150,10 @@ public class GameManager : MonoBehaviour
                 secondCard.DestroyCard(1f);
             }
 
-            if (secondCard.idx == 8)
-            {
-                firstCard.DestroyCard(0f);
-                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
-                secondCard.transform.position = new Vector2(0, 0);
-                secondCard.DestroyCard(3f);
-            }
-
-            else
-            {
-                firstCard.DestroyCard(1f);
-                secondCard.DestroyCard(1f);
-            }
-
             cardCount -= 2;
 
-            if (cardCount == 0 && level == 1 || cardCount == 0 && level >=2 )
+            if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
             {
-                board.gameObject.SetActive(false);
                 timeTxt.gameObject.SetActive(false);
 
                 if (stage == 1)                                        //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
@@ -217,9 +203,19 @@ public class GameManager : MonoBehaviour
                 }
 
                 Delete();
-                score++;
+             
             }
 
+            score++;
+
+            if (level == 2)
+            {
+                if (cardCount == 0)
+                {
+                    Invoke("ReBoard", 1f);
+                    Debug.Log("score: " + score);
+                }
+            }
         }
         else
         {
@@ -230,15 +226,6 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (level == 2)
-        {
-            if (cardCount == 0)
-            {
-                Invoke("ReBoard", 1f);
-                Debug.Log("score: " + score);
-            }
-        }
-
         firstCard = null;
         secondCard = null;
     }
@@ -247,11 +234,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("이전 스테이지 정보 삭제");
         cardCount = 0;
-        //stage = 0;
         Time.timeScale = 1f;
         time = 0.0f;
         timeTxt.text = time.ToString("N2");
-        //board.Delete();
     }
 
     private void ReBoard()

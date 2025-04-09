@@ -732,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: {fileID: 4517450310747507875, guid: 4ee2e6d5102329d4596426a1a169c084, type: 3}
+  cardArr: 
 --- !u!4 &872999319
 Transform:
   m_ObjectHideFlags: 0
@@ -808,6 +809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
+  etcCard: {fileID: 0}
   board: {fileID: 872999318}
   clip: {fileID: 8300000, guid: 14e90642c9d3b064fb92e21e7e855985, type: 3}
   wrongClip: {fileID: 8300000, guid: fb2f6295db897d14f8cbe9795b40ae49, type: 3}
@@ -816,10 +818,10 @@ MonoBehaviour:
   failPanel: {fileID: 2085373612}
   hiddenBtn: {fileID: 1464498807}
   timeTxt: {fileID: 1843043302}
-  time: 60
+  time: 5
   isGamePlaying: 0
   cardCount: 0
-  Clear: 0
+  Clear: 4
   stage: 0
   level: 0
   score: 0
