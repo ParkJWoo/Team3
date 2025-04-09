@@ -167,7 +167,6 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.instance.SetSpeed(1.5f);
             AudioManager.instance.PlayTickSfx();
-            Debug.Log("시간 20초 이하 - BGM 속도 증가 + 효과음 재생 시작");
         }
 
         if (level == 1 && time <= 0.0f && cardCount != 0)

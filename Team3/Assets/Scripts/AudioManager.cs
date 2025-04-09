@@ -125,7 +125,6 @@ public class AudioManager : MonoBehaviour
         if (SFXSource != null && SFXSource.isPlaying)
         {
             SFXSource.Stop();
-            Debug.Log("Tick 효과음 정지");
         }
     }
 
