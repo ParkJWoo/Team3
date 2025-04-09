@@ -134,6 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &120294012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8813344715453220208, guid: fae20304986797747bdb3c5c2c1240ef, type: 3}
+  m_PrefabInstance: {fileID: 7651437144670426190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123082964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 175413555175540590, guid: c281e7e94895bc841a29374edd8cae88, type: 3}
@@ -700,6 +711,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1665292406064751315, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
   m_PrefabInstance: {fileID: 1545493550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &829113471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 198216746265542099, guid: 2f6c5c097159d2b40ac5b8087c3b5dba, type: 3}
+  m_PrefabInstance: {fileID: 3533391974241626861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &850595535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1980142016484207208, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
@@ -774,6 +790,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4115850777149219022, guid: 57f61b8407e136d4baaf8dc49b83d2c8, type: 3}
   m_PrefabInstance: {fileID: 135505470}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1042381653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6859664880588014658, guid: fae20304986797747bdb3c5c2c1240ef, type: 3}
+  m_PrefabInstance: {fileID: 7651437144670426190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150954784 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4281082440287598967, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
@@ -832,13 +853,16 @@ MonoBehaviour:
   clearPanel: {fileID: 997190244}
   nextPanel: {fileID: 719749699}
   failPanel: {fileID: 2085373612}
-  hiddenPanel: {fileID: 0}
+  hiddenPanel: {fileID: 829113471}
+  infinityPanel: {fileID: 1042381653}
   hiddenBtn: {fileID: 1464498807}
   hardBtn: {fileID: 1981104606}
   st2Btnimg: {fileID: 28340409}
   st3Btnimg: {fileID: 1434143517}
   timeTxt: {fileID: 1843043302}
   time: 5
+  nowScoreTxt: {fileID: 1783856040}
+  bestScoreTxt: {fileID: 120294012}
   isGamePlaying: 0
   cardCount: 0
   Clear: 4
@@ -846,7 +870,7 @@ MonoBehaviour:
   stage: 0
   level: 0
   score: 0
-  bestScore: 0
+  bestScore: 1
 --- !u!4 &1345052099
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,6 +1590,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+--- !u!114 &1783856040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4432616380018515375, guid: fae20304986797747bdb3c5c2c1240ef, type: 3}
+  m_PrefabInstance: {fileID: 7651437144670426190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1843043300
 GameObject:
   m_ObjectHideFlags: 0
