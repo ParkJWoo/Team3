@@ -9,11 +9,11 @@ public class Exit : MonoBehaviour
     public void GameEnd()
     {
         anim.SetBool("isClick", true);
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
             Application.Quit();
-    #endif
+#endif
     }
-    
+
 }

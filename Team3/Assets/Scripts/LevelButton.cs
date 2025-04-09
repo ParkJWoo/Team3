@@ -14,11 +14,11 @@ public class LevelButton : MonoBehaviour
     public int level;
 
     public void LevelBtn()
-    { 
+    {
         GameManager.instance.level = level;
         GameManager.instance.stage = 0;                               //스테이지변수 초기화
         GameManager.instance.cardCount = 0;
-        if (level == 1)                                               
+        if (level == 1)
         {
             easyanim.SetBool("isClick", true);
             hardanim.SetBool("isClick", false);
@@ -27,13 +27,13 @@ public class LevelButton : MonoBehaviour
             anim2.SetBool("isClick", false);
             anim3.SetBool("isClick", false);
         }
-        else if(level == 2)
+        else if (level == 2)
         {
-            if(GameManager.instance.Clear >= 3)       //쉬움 3스테까지 클리어했다면
+            if (GameManager.instance.Clear >= 3)       //쉬움 3스테까지 클리어했다면
             {
                 hardanim.SetBool("isClick", true);
                 easyanim.SetBool("isClick", false);
-                
+
                 anim1.SetBool("isClick", false);
                 anim2.SetBool("isClick", false);
                 anim3.SetBool("isClick", false);
@@ -42,7 +42,7 @@ public class LevelButton : MonoBehaviour
             {
                 GameManager.instance.level = 1;
             }
-            
+
         }
     }
 }

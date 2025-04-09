@@ -821,7 +821,8 @@ MonoBehaviour:
   cardCount: 0
   Clear: 0
   stage: 0
-  closeSpeed: 1
+  level: 0
+  score: 0
 --- !u!4 &1345052099
 Transform:
   m_ObjectHideFlags: 0
@@ -1065,8 +1066,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  normalClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  hellClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   hasStarted: 0
+  isHell: 0
 --- !u!4 &1510180060
 Transform:
   m_ObjectHideFlags: 0

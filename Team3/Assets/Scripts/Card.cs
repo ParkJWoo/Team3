@@ -52,7 +52,7 @@ public class Card : MonoBehaviour
 
     public void DestroyCard(float time)
     {
-        anim.SetBool("isMatch",true);
+        anim.SetBool("isMatch", true);
         Invoke("DestroyCardInvoke", time);
     }
 
@@ -63,7 +63,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        
+
         Invoke("CloseCardInvoke", 1f);
     }
 

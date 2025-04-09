@@ -1,12 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Android.Bluetooth;
-using Android.Media;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static System.Net.Mime.MediaTypeNames;
 
 public class GameManager : MonoBehaviour
 {
@@ -131,7 +127,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-       
+
 
     }
 
