@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject clearPanel; // 최종 스테이지 클리어 시 나오는 팀원 정보 판넬
     public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
+    public GameObject hiddenPanel; // 히든 스테이지 클리어 시 나오는 판넬
 
     public GameObject hiddenBtn;
     public GameObject hardBtn;
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
         if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
         {
             AudioManager.instance.SetSpeed(1.5f);
+            AudioManager.instance.PlayTickSfx();
         }
 
         if (level == 1 && time <= 0.0f && cardCount != 0)
@@ -176,6 +178,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.SwitchMusic(false);
+            AudioManager.instance.StopTickSfx();
             isGamePlaying = false;
             board.gameObject.SetActive(false);
         }
@@ -253,13 +256,34 @@ public class GameManager : MonoBehaviour
 
     public void GameClear(int _stage) // 게임이 끝났을 경우
     {
-        nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+        //nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+
         int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
         Time.timeScale = 0.0f;
+
+        if(stage >= 0 && stage <= 2)
+        {
+            nextPanel.SetActive(true);
+        }
+
+        else if(stage == 3)
+        {
+            clearPanel.SetActive(true);
+        }
+
+        else if (stage == 4)
+        {
+            hiddenPanel.SetActive(true);
+        }
 
         if (level == 1)
         {
             Clear = _stage;
+
+            //if (stage == 4)
+            //{
+            //    clearPanel.SetActive(true);
+            //}
         }
         else if (level == 2)
         {

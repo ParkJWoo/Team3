@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300737910}
   - component: {fileID: 300737909}
+  - component: {fileID: 300737911}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -207,6 +208,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &300737911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300737908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76531f417982a7540a8a1b0028fc2b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0.4
+  resetX: -2.71
+  startX: -0.03
 --- !u!1 &536165152
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +414,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  normalClip: {fileID: 8300000, guid: 5cbce56f90c96f84dbed76a3478f0165, type: 3}
+  hellClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  SFXSource: {fileID: 0}
+  tickSfx: {fileID: 0}
+  hasStarted: 0
+  isHell: 0
 --- !u!82 &685488905
 AudioSource:
   m_ObjectHideFlags: 0
@@ -411,7 +432,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
