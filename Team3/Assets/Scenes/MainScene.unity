@@ -684,7 +684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  cardCount: 4
 --- !u!1 &719749699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6591011277076083313, guid: 21c9694d8c6721748b17a457adb7d5ad, type: 3}
@@ -1350,6 +1349,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 534668923}
     m_Modifications:
+    - target: {fileID: 1418293893711219654, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+      propertyPath: m_Text
+      value: "\uBB34\uD55C\uBAA8\uB4DC\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568379684862032455, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+      propertyPath: m_Text
+      value: "\uD788\uB4E0 \uBAA8\uB4DC"
+      objectReference: {fileID: 0}
     - target: {fileID: 5967713985298481581, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
       propertyPath: m_Name
       value: LevelPanel
@@ -1433,6 +1440,10 @@ PrefabInstance:
     - target: {fileID: 7827662014630680391, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525152301084672425, guid: eb080328ad22d8044bb7150505b8ac3e, type: 3}
+      propertyPath: m_Text
+      value: "\uAE30\uBCF8 \uBAA8\uB4DC"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
