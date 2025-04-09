@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,9 +29,7 @@ public class GameManager : MonoBehaviour
     public int cardCount = 16;
 
     // 스테이지 클리어 여부 판단.
-    public bool isClear_1 = false;
-    public bool isClear_2 = false;
-    public bool isClear_3 = false;
+    public int Clear = 0;
 
     public int stage = 0;
     public float closeSpeed = 0f;
@@ -40,6 +39,11 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        }
+
+        if (PlayerPrefs.HasKey("Clear"))
+        {
+            Clear = PlayerPrefs.GetInt("Clear");
         }
 
         board.gameObject.SetActive(false);
@@ -114,21 +118,24 @@ public class GameManager : MonoBehaviour
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
-                    isClear_1 = true;
+                    Clear = 1;
+                    PlayerPrefs.SetInt("Clear", Clear);
                 }
 
                 if (stage == 2)                           //  1스테이지, 혹은 2스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     nextPanel.SetActive(true);                         //  카드를 모두 맞췄을 시, 클리어 판넬 생성
                     Time.timeScale = 0.0f;
-                    isClear_2 = true;
+                    Clear = 2;
+                    PlayerPrefs.SetInt("Clear", Clear);
                 }
 
                 else if(stage == 3)                                      //  최종 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬 생성 로직
                 {
                     clearPanel.SetActive(true);
                     Time.timeScale = 0.0f;
-                    isClear_3 = true;
+                    Clear = 3;
+                    PlayerPrefs.SetInt("Clear", Clear);
                 }
 
                 Delete();
