@@ -217,6 +217,11 @@ public class GameManager : MonoBehaviour
 
             Delete();
         }
+
+        if (AudioManager.instance.audioSource.pitch == 1.0f && AudioManager.instance.SFXSource.isPlaying)
+        {
+            AudioManager.instance.StopTickSfx();
+        }
     }
 
     public void Matched()
@@ -269,6 +274,8 @@ public class GameManager : MonoBehaviour
     public void GameClear(int _stage,int _score) // 게임이 끝났을 경우
     {
         //nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
 
         int pastBestScore = PlayerPrefs.GetInt("bestScore", bestScore); // 무한모드 최고점수
         int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지

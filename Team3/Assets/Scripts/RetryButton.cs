@@ -13,6 +13,8 @@ public class RetryButton : MonoBehaviour
 
         Debug.Log("retrybutton");
         AudioManager.instance.PlayClickSound();
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
 
         GameManager.instance.time = 20.0f; // 타이머 초기화
         Time.timeScale = 1.0f;

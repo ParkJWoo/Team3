@@ -11,6 +11,8 @@ public class LoadScene : MonoBehaviour
         //anim.SetBool("isClick", true);
         SceneManager.LoadScene("MainScene");
         AudioManager.instance.PlayClickSound();
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
     }
 
     public void LoadStartScene()                                  //  MainScene »£√‚
@@ -18,5 +20,7 @@ public class LoadScene : MonoBehaviour
         //anim.SetBool("isClick", true);
         SceneManager.LoadScene("StartScene");
         AudioManager.instance.PlayClickSound();
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
     }
 }

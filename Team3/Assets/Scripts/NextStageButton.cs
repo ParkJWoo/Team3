@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class NextStageButton : MonoBehaviour
@@ -11,6 +10,8 @@ public class NextStageButton : MonoBehaviour
     public void NextStageBtn()
     {
         AudioManager.instance.PlayClickSound();
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
 
         GameManager.instance.nextPanel.SetActive(false);
 
