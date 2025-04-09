@@ -67,6 +67,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Text hardbtnText = hardBtn.GetComponentInChildren<Text>();
+        if (Clear >= 3)
+        {
+            hardbtnText.text = "무한 모드";
+        }
+        else
+        {
+            hardbtnText.text = "무한 모드(잠김)";
+        }
 
         if (Clear >= 6f)                        //어려움스테3까지 클리어했을때 보임
         {
@@ -101,14 +110,13 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.SetSpeed(1.5f);
         }
 
-        if (time <= 0.0f && cardCount != 0)
+        if (level == 1 && time <= 0.0f && cardCount != 0)
         {
-            //failPanel.SetActive(true);
-            Time.timeScale = 0.0f;
+            failPanel.SetActive(true);
+            Time.timeScale = 1.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.SwitchMusic(false);
             isGamePlaying = false;
-            //time = 60.0f;
             board.gameObject.SetActive(false);
         }
 
@@ -116,17 +124,15 @@ public class GameManager : MonoBehaviour
         {//게임 끝난 조건 확인
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed(); //원상복귀
-            //Time.timeScale = 1.0f;
-            //time = 60.0f;
-            //timeTxt.text = time.ToString("N2");
             AudioManager.instance.ResetSpeed();
 
             if (stage == 4)
             {
                 AudioManager.instance.SwitchMusic(false);
             }
+
             board.gameObject.SetActive(false);
-            return;
+
         }
 
         if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
@@ -137,7 +143,6 @@ public class GameManager : MonoBehaviour
 
             Delete();
         }
-
     }
 
     public void Matched()
@@ -175,11 +180,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
             audioSource.PlayOneShot(wrongClip);
             firstCard.CloseCard();
             secondCard.CloseCard();
-
         }
 
         firstCard = null;
@@ -199,12 +202,14 @@ public class GameManager : MonoBehaviour
         else if (level == 2)
         {
             Clear = _stage + 3;
+            board.OnDisable();
         }
-        
-        if(pastStage < _stage)
-        PlayerPrefs.SetInt("Clear", Clear);
-    }
 
+        if (pastStage < _stage)
+        {
+            PlayerPrefs.SetInt("Clear", Clear);
+        }
+    }
 
     public void Delete()                                                //  스테이지 종료 후, 기존의 스테이지 데이터 초기화 → 다음 스테이지의 데이터를 새로 받아오기 위한 정리 함수
     {
