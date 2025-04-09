@@ -7,6 +7,8 @@ public class Board : MonoBehaviour
 {
     public GameObject Card;
 
+    public List<int> cardArr = new List<int>();
+
     public void Start()
     {
         if (GameManager.instance.stage == 1)
@@ -34,7 +36,8 @@ public class Board : MonoBehaviour
     {
         Debug.Log(GameManager.instance.stage);
 
-        List<int> cardArr = RandomCardImg(2);
+        //List<int> cardArr = RandomCardImg(2);
+        cardArr = RandomCardImg(2);
 
         for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
@@ -52,7 +55,8 @@ public class Board : MonoBehaviour
 
     public void Stage2BoardArrangement()
     {
-        List<int> cardArr = RandomCardImg(4);
+        //List<int> cardArr = RandomCardImg(4);
+        cardArr = RandomCardImg(2);
 
         for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
@@ -70,7 +74,8 @@ public class Board : MonoBehaviour
 
     public void Stage3BoardArrangement()
     {
-        List<int> cardArr = RandomCardImg(8);
+        //List<int> cardArr = RandomCardImg(8);
+        cardArr = RandomCardImg(8);
 
         for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
@@ -88,7 +93,8 @@ public class Board : MonoBehaviour
 
     public void Stage4BoardArrangement()
     {
-        List<int> cardArr = RandomCardImg(10);
+        //List<int> cardArr = RandomCardImg(10);
+        cardArr = RandomCardImg(10);
 
         for (int i = 0; i < cardArr.Count; i++) //카드 배치
         {
@@ -122,5 +128,11 @@ public class Board : MonoBehaviour
         pair = pair.OrderBy(x => Random.Range(0f, 1f)).ToList(); // pair리스트에 추가한 카드를 랜덤하게 재배치
 
         return pair;
+    }
+
+    public void Delete()
+    {
+        Destroy(Card.gameObject);
+        cardArr.Clear();
     }
 }

@@ -15,16 +15,25 @@ public class RetryButton : MonoBehaviour
 
         GameManager.instance.failPanel.SetActive(false);
 
+        GameManager.instance.board.Delete();
+
+        if (GameManager.instance.failPanel == true)
+        {
+            Debug.Log("½ÇÆĞ ÆÇ³Ú ÄÑÁü");
+            GameManager.instance.failPanel.SetActive(false);
+            Debug.Log(GameManager.instance.failPanel);
+        }
+
         //GameManager.instance.stage += 1;
         //GameManager.instance.cardCount = cardCount * 2;
 
         //stage = GameManager.instance.stage + 1;
         //cardCount = GameManager.instance.cardCount * 2;
 
-        Debug.Log(GameManager.instance.stage);
-        Debug.Log(GameManager.instance.cardCount);
+        //Debug.Log(GameManager.instance.stage);
+        //Debug.Log(GameManager.instance.cardCount);
 
-        //GameManager.instance.board.Start();
+        GameManager.instance.board.Start();
         GameManager.instance.isGamePlaying = true;
 
         GameManager.instance.board.gameObject.SetActive(true);

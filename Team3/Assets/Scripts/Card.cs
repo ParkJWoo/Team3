@@ -73,4 +73,9 @@ public class Card : MonoBehaviour
         back.SetActive(true);
         anim.SetBool("isClick", false);
     }
+
+    public void Delete()
+    {
+        Destroy(gameObject);
+    }
 }
