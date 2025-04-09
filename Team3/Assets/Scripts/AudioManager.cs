@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip normalClip;
     public AudioClip hellClip;
 
-    public AudioSource sfxSource;
+    public AudioSource SFXSource;
     public AudioClip tickSfx;
 
     public bool hasStarted = false;
@@ -18,11 +18,25 @@ public class AudioManager : MonoBehaviour
 
     public void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            //BGM 오디오소스 초기화
+            if (SFXSource == null)
+            {
+                audioSource = GetComponent<AudioSource>();
+            }
+
+            //tick 효과음소스
+            GameObject sfxObject = new GameObject("TickSFXSource");
+            sfxObject.transform.parent = this.transform;
+            SFXSource = sfxObject.AddComponent<AudioSource>();
+            SFXSource.playOnAwake = false;
+            SFXSource.loop = true;
         }
+
         else
         {
             Destroy(gameObject);
@@ -42,14 +56,6 @@ public class AudioManager : MonoBehaviour
                 audioSource.Play();
                 hasStarted = true;
             }
-        }
-
-        if (sfxSource == null)
-        {
-            GameObject sfxObject = new GameObject("SFXSource");
-            sfxObject.transform.parent = this.transform;
-            sfxSource = sfxObject.AddComponent<AudioSource>();
-            sfxSource.loop = true;
         }
     }
 
@@ -102,23 +108,24 @@ public class AudioManager : MonoBehaviour
 
     public void PlayTickSfx()
     {
-        if (sfxSource != null && !sfxSource.isPlaying)
-        {
-            sfxSource.clip = tickSfx;
-            sfxSource.pitch = 1.0f; // pitch 공유 X
-            sfxSource.Play();
+        //if (SFXSource == null)
+        //{Debug.LogWarning("[AudioManager] sfxSource 초기화 안됨"); return;}
 
-            Debug.Log("Play tick sfx: " + sfxSource.clip.name);
+        if (!SFXSource.isPlaying)
+        {
+            SFXSource.clip = tickSfx;
+            SFXSource.loop = true;
+            SFXSource.pitch = 1.0f;
+            SFXSource.Play();
         }
     }
 
     public void StopTickSfx()
     {
-        if (sfxSource != null && sfxSource.isPlaying)
+        if (SFXSource != null && SFXSource.isPlaying)
         {
-            sfxSource.Stop();
-
-            Debug.Log("[GameManager] 시간 20초 이하 - BGM 속도 증가 + 효과음 재생 시작");
+            SFXSource.Stop();
+            Debug.Log("Tick 효과음 정지");
         }
     }
 

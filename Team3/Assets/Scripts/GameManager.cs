@@ -166,6 +166,8 @@ public class GameManager : MonoBehaviour
         if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
         {
             AudioManager.instance.SetSpeed(1.5f);
+            AudioManager.instance.PlayTickSfx();
+            Debug.Log("시간 20초 이하 - BGM 속도 증가 + 효과음 재생 시작");
         }
 
         if (time <= 0.0f && cardCount != 0)
@@ -174,6 +176,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.SwitchMusic(false);
+            AudioManager.instance.StopTickSfx();
             isGamePlaying = false;
             //time = 60.0f;
             board.gameObject.SetActive(false);
@@ -186,7 +189,7 @@ public class GameManager : MonoBehaviour
             //Time.timeScale = 1.0f;
             //time = 60.0f;
             //timeTxt.text = time.ToString("N2");
-            AudioManager.instance.ResetSpeed();
+            AudioManager.instance.StopTickSfx();
 
             if (stage == 4)
             {
