@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class NextStageButton : MonoBehaviour
@@ -11,17 +12,16 @@ public class NextStageButton : MonoBehaviour
     {
         //anim.SetBool("isClick", true);
 
-        //Debug.Log(GameManager.instance.stage);
-        //Debug.Log(GameManager.instance.cardCount);
-
         GameManager.instance.nextPanel.SetActive(false);
 
-        //GameManager.instance.cardCount = 4;
+        if (GameManager.instance.level == 2)     //어려움난이도 선택시
+        {
+            if (GameManager.instance.Clear < 3)         //쉬움난이도 스테3을 못깼다면
+            {
+                return;
+            }
 
-        //GameManager.instance.stage += 1;
-        //GameManager.instance.cardCount += 4;
-
-        //cardCount += 4;
+        }
 
         GameManager.instance.time = 60.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
@@ -29,8 +29,6 @@ public class NextStageButton : MonoBehaviour
         GameManager.instance.stage += 1;
         GameManager.instance.cardCount = cardCount * 2;
 
-        //stage = GameManager.instance.stage + 1;
-        //cardCount = GameManager.instance.cardCount * 2;
 
         GameManager.instance.isGamePlaying = true;
 
