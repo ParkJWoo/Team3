@@ -264,15 +264,15 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(clip);
 
-            if (secondCard.idx == 8)
+            if (secondCard.idx == 8) // 악령 카드가 매치되었을 때
             {
-                isGhost = true;
+                isGhost = true; //isGhost true -> 카드 뒤집기 불가능
                 firstCard.DestroyCard(0f);
 
-                secondCard.shouldTurnOffGhost = true;
-                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true);
-                secondCard.transform.position = new Vector2(0, 0);
-                secondCard.DestroyCard(3f);
+                secondCard.shouldTurnOffGhost = true; // 앞에 firstcard가 파괴되었을 때 isGhost가 false가 되지 않도록 방지하는 변수
+                secondCard.front.GetComponent<Animator>().SetBool("isOpen", true); // 악령 확대 애니 실행
+                secondCard.transform.position = new Vector2(0, 0); //악령 중앙으로 이동시킴
+                secondCard.DestroyCard(3f); //3초 뒤 카드 파괴
             }
             else
             {

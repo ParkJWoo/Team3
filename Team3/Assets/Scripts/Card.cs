@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -33,6 +34,7 @@ public class Card : MonoBehaviour
     {
         if (GameManager.instance.secondCard != null) return;
 
+        // isGhost가 true인 상태에서는 카드를 오픈할 수 없도록 리턴
         if (GameManager.instance.isGhost == true) return;
 
         anim.SetBool("isClick", true);
@@ -53,6 +55,7 @@ public class Card : MonoBehaviour
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched(); // 두번째 카드를 오픈하면 Matched()를 실행
         }
+        DestroyCardInvoke();
     }
 
     public void DestroyCard(float time)
@@ -64,6 +67,9 @@ public class Card : MonoBehaviour
     void DestroyCardInvoke()
     {
         Destroy(gameObject);
+
+        //첫번째 카드가 파괴된 후에만 isGhost를 false로 바꿔준다.
+        //Ghost의 Ani가 끝난 후(카드가 파괴된 3초 후)에 게임 진행 가능.
         if (shouldTurnOffGhost && GameManager.instance != null)
         {
             GameManager.instance.isGhost = false;
