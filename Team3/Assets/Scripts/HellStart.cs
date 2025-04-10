@@ -20,9 +20,9 @@ public class HellStart : MonoBehaviour
 
         GameManager.instance.stage = 4;
         GameManager.instance.cardCount = cardCount;
-        GameManager.instance.level = 1;
+        GameManager.instance.mode = 1;
 
-        if (GameManager.instance.stage != 0 && GameManager.instance.level != 0)
+        if (GameManager.instance.stage != 0 && GameManager.instance.mode != 0)
         {
             anim.SetBool("isClick", true);
             levelPanel.SetActive(false);

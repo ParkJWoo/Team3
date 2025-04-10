@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     public bool isGhost = false;
 
     public int stage = 0;
-    public int level = 0;
+    public int mode = 0;
     public int score = 0;
     public int bestScore = 0;
 
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         audioSource = GetComponent<AudioSource>();
         stage = 0;
-        level = 0;
+        mode = 0;
     }
 
     // Update is called once per frame
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             hardbtnText.text = "무한 모드(잠김)";
         }
 
-        if (level == 1)
+        if (mode == 1)
         {
             if (Clear < 3)                                      //쉬움모드를 모두 클리어하지않았을때
             {
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
 
         //무한 모드 전용 BGM 재생
-        if (level == 2 && !AudioManager.instance.IsHellMode())
+        if (mode == 2 && !AudioManager.instance.IsHellMode())
         {
             AudioManager.instance.SwitchMusic(false, true);
             AudioManager.instance.StopTickSfx();
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.SetSpeed(1.5f);
             }
 
-            if ((level == 2 || stage == 4))
+            if ((mode == 2 || stage == 4))
             {
                 if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
                 {
@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (level == 1 && time <= 0.0f && cardCount != 0)
+        if (mode == 1 && time <= 0.0f && cardCount != 0)
         {
             failPanel.SetActive(true);
             Time.timeScale = 1.0f;
@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
             board.gameObject.SetActive(false);
         }
 
-        if (cardCount <= 0 && level == 1)
+        if (cardCount <= 0 && mode == 1)
         {//게임 끝난 조건 확인
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed();
@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if ((cardCount == 0 && level == 1) || (time <= 0 && level == 2))
+        if ((cardCount == 0 && mode == 1) || (time <= 0 && mode == 2))
         {
             timeTxt.gameObject.SetActive(false);
 
@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
 
             
-            if (level == 2)
+            if (mode == 2)
             {
                 score++;
                 if (cardCount == 0)
@@ -330,7 +330,7 @@ public class GameManager : MonoBehaviour
             hiddenPanel.SetActive(true);
         }
 
-        if (level == 1)
+        if (mode == 1)
         {
             Clear = _stage;
 
@@ -350,7 +350,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (level == 2)
+        else if (mode == 2)
         {
             Clear = _stage + 3;
             board.OnDisable();
@@ -388,7 +388,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         time = 0.0f;
         timeTxt.text = time.ToString("N2");
-        if (level == 2)
+        if (mode == 2)
         {
             //score = 0;  // 무한모드 점수 초기화
         }

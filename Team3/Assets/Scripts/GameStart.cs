@@ -17,7 +17,7 @@ public class GameStart : MonoBehaviour
         AudioManager.instance.StopTickSfx();
         AudioManager.instance.PlayMusic();
 
-        if (GameManager.instance.level == 1)
+        if (GameManager.instance.mode == 1)
         {
             if (GameManager.instance.stage != 0)
             {
@@ -31,7 +31,7 @@ public class GameStart : MonoBehaviour
             }
             
         }
-        else if (GameManager.instance.level == 2)
+        else if (GameManager.instance.mode == 2)
         {
             anim.SetBool("isClick", true);
             levelPanel.SetActive(false);

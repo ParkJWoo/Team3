@@ -32,7 +32,7 @@ public class LevelButton : MonoBehaviour
         startBtn.SetActive(false);
 
 
-        GameManager.instance.level = level;
+        GameManager.instance.mode = level;
         GameManager.instance.stage = 0;                               //스테이지변수 초기화
         GameManager.instance.cardCount = 0;
         if (level == 1)
@@ -70,7 +70,7 @@ public class LevelButton : MonoBehaviour
             }
             else                                      //쉬움 3스테까지 클리어를 못했다면
             {
-                GameManager.instance.level = 1;
+                GameManager.instance.mode = 1;
             }
 
         }
