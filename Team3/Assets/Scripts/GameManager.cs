@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
         }*/
 
 
-        if (score >= 20f)                        //히든버튼 무한모드 점수10이상시 보임
+        if (bestScore >= 20f)                        //히든버튼 무한모드 점수10이상시 보임
         {
             hiddenBtn.SetActive(true);
         }
