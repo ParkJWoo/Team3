@@ -9,11 +9,13 @@ public class OptionButton : MonoBehaviour
     {
         GameManager.instance.optionPanel.SetActive(false);
         Time.timeScale = 1f;
+        AudioManager.instance.PlayClickSound();
     }
 
     public void OptionOpenBtn()
     {
         GameManager.instance.optionPanel.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.instance.PlayClickSound();
     }
 }
