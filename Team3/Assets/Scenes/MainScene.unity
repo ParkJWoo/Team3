@@ -992,6 +992,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 534668923}
     m_Modifications:
+    - target: {fileID: 1248905146483414729, guid: fae20304986797747bdb3c5c2c1240ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6859664880588014658, guid: fae20304986797747bdb3c5c2c1240ef, type: 3}
       propertyPath: m_Name
       value: InfinityPanel
