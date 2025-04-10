@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,12 +12,14 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip normalClip;
     public AudioClip hellClip;
+    public AudioClip infinityClip;
 
     public AudioSource SFXSource;
     public AudioClip tickSfx;
 
     public bool hasStarted = false;
     public bool isHell = false;
+    public bool isInfinity = false;
 
     public AudioSource clickSource;
     public AudioClip defaultClick;
@@ -54,6 +58,26 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 예외 처리: 인게임 씬에서는 자동으로 변경하지 않음
+        if (scene.name == "GameScene") return;
+
+        // BGM 상태를 초기화
+        isInfinity = false;
+        isHell = false;
+        ResetSpeed();
+        StopTickSfx();
+        SwitchMusic(false, false); // 무조건 normal로 전환
     }
 
     void Start()
@@ -130,18 +154,36 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void SwitchMusic(bool toHellMode)
+    public void SwitchMusic(bool toHellMode, bool isInfinityMode = false)
     {
         if (audioSource == null) return;
 
-        AudioClip targetClip = toHellMode ? hellClip : normalClip;
+        AudioClip targetClip = normalClip;
+
+        if (isInfinityMode)
+        {
+            targetClip = infinityClip;
+            isInfinity = true;
+            isHell = false;
+        }
+        else if (toHellMode)
+        {
+            targetClip = hellClip;
+            isHell = true;
+            isInfinity = false;
+        }
+        else
+        {
+            isHell = false;
+            isInfinity = false;
+        }
 
         if (audioSource.clip == targetClip)
         {
+            audioSource.pitch = 1.0f;
             return;
         }
 
-        isHell = toHellMode;
         audioSource.Stop();
         audioSource.clip = targetClip;
         audioSource.pitch = 1.0f;
@@ -149,12 +191,10 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = bgmVolume;
     }
 
+
     public void PlayTickSfx()
     {
-        //if (SFXSource == null)
-        //{Debug.LogWarning("[AudioManager] sfxSource 초기화 안됨"); return;}
-
-        if(SFXSource == null || SFXSource.isPlaying) return;
+        if (SFXSource == null || SFXSource.isPlaying) return;
 
         SFXSource.clip = tickSfx;
         SFXSource.loop = true;
@@ -162,6 +202,7 @@ public class AudioManager : MonoBehaviour
         SFXSource.volume = sfxVolume;
         SFXSource.Play();
     }
+
 
     public void StopTickSfx()
     {

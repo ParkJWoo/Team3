@@ -171,9 +171,17 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        // BGM관련 순서 조정
         if (stage == 4 && !AudioManager.instance.IsHellMode())
         {
             AudioManager.instance.SwitchMusic(true);
+            AudioManager.instance.StopTickSfx();
+        }
+
+        //무한 모드 전용 BGM 재생
+        if (level == 2 && !AudioManager.instance.IsHellMode())
+        {
+            AudioManager.instance.SwitchMusic(false, true);
             AudioManager.instance.StopTickSfx();
         }
 
@@ -185,10 +193,20 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.StopTickSfx();
         }
 
-        if (time <= 20.0f && AudioManager.instance.audioSource.pitch == 1.0f)
+        if (time <= 20.0f)
         {
-            AudioManager.instance.SetSpeed(1.5f);
-            AudioManager.instance.PlayTickSfx();
+            if (AudioManager.instance.audioSource.pitch != 1.5f)
+            {
+                AudioManager.instance.SetSpeed(1.5f);
+            }
+
+            if ((level == 2 || stage == 4))
+            {
+                if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
+                {
+                    AudioManager.instance.PlayTickSfx();
+                }
+            }
         }
 
         if (level == 1 && time <= 0.0f && cardCount != 0)
@@ -196,8 +214,7 @@ public class GameManager : MonoBehaviour
             failPanel.SetActive(true);
             Time.timeScale = 1.0f;
             AudioManager.instance.ResetSpeed();
-            AudioManager.instance.SwitchMusic(false);
-            AudioManager.instance.StopTickSfx(); // 실패해도 tick꺼줌
+            AudioManager.instance.StopTickSfx();
             isGamePlaying = false;
             board.gameObject.SetActive(false);
         }
@@ -206,12 +223,7 @@ public class GameManager : MonoBehaviour
         {//게임 끝난 조건 확인
             isGamePlaying = false;
             AudioManager.instance.ResetSpeed();
-            AudioManager.instance.StopTickSfx(); // 클리어해도 tick꺼줌
-
-            if (stage == 4)
-            {
-                AudioManager.instance.SwitchMusic(false);
-            }
+            AudioManager.instance.StopTickSfx();
 
             board.gameObject.SetActive(false);
 

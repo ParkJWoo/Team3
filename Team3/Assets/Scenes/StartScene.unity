@@ -423,9 +423,9 @@ MonoBehaviour:
   clickSource: {fileID: 0}
   defaultClick: {fileID: 8300000, guid: 1a88f20133fe0be48bc3172d9b77a213, type: 3}
   startClick: {fileID: 8300000, guid: 0c85e1eaf854fa1419f3362c3920f17c, type: 3}
-  bgmVolume: 0.2
+  bgmVolume: 0.55
   sfxVolume: 1
-  clickVolume: 0.2
+  clickVolume: 0.5
 --- !u!82 &685488905
 AudioSource:
   m_ObjectHideFlags: 0

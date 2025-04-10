@@ -12,7 +12,12 @@ public class Exit : MonoBehaviour
         AudioManager.instance.ResetSpeed();
         AudioManager.instance.StopTickSfx();
 
+        AudioManager.instance.isHell = false;
+        AudioManager.instance.isInfinity = false;
+        AudioManager.instance.SwitchMusic(false, false);
+
         anim.SetBool("isClick", true);
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

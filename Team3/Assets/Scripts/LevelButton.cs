@@ -24,7 +24,8 @@ public class LevelButton : MonoBehaviour
         AudioManager.instance.PlayClickSound();
         AudioManager.instance.ResetSpeed();
         AudioManager.instance.StopTickSfx();
-
+        AudioManager.instance.SwitchMusic(false, false);
+        
         st1Btn.SetActive(true);
         st2Btn.SetActive(true);
         st3Btn.SetActive(true);

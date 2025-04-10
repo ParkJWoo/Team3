@@ -13,6 +13,7 @@ public class LoadScene : MonoBehaviour
         AudioManager.instance.PlayClickSound();
         AudioManager.instance.ResetSpeed();
         AudioManager.instance.StopTickSfx();
+        AudioManager.instance.SwitchMusic(false, false);
     }
 
     public void LoadStartScene()                                  //  MainScene »£√‚
@@ -22,5 +23,6 @@ public class LoadScene : MonoBehaviour
         AudioManager.instance.PlayClickSound();
         AudioManager.instance.ResetSpeed();
         AudioManager.instance.StopTickSfx();
+        AudioManager.instance.SwitchMusic(false, false);
     }
 }
