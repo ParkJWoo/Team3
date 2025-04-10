@@ -10,6 +10,7 @@ public class HellStart : MonoBehaviour
     public int stage;
     public int cardCount;
 
+    public MainBg mainBg;
 
     public void LetHellStart()
     {
@@ -31,5 +32,12 @@ public class HellStart : MonoBehaviour
             GameManager.instance.time = 25.0f;
             GameManager.instance.isGamePlaying = true;
         }
+
+        if(mainBg != null)               //배경 이벤트
+        {
+            mainBg.ActivateFade();
+        }
     }
+
+    
 }
