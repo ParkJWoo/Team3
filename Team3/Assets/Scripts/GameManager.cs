@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
 
         //무한 모드 전용 BGM 재생
-        if (mode == 2 && !AudioManager.instance.IsHellMode())
+        if (mode == 2 && AudioManager.instance.IsHellMode())
         {
             AudioManager.instance.SwitchMusic(false, true);
             AudioManager.instance.StopTickSfx();
@@ -202,13 +202,18 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.SetSpeed(1.5f);
             }
 
-            if ((mode == 2 || stage == 4))
+            if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
             {
-                if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
-                {
-                    AudioManager.instance.PlayTickSfx();
-                }
+                AudioManager.instance.PlayTickSfx();
             }
+
+            //if ((mode == 2 || stage == 4))
+            //{
+            //    if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
+            //    {
+            //        AudioManager.instance.PlayTickSfx();
+            //    }
+            //}
         }
 
         if (mode == 1 && time <= 0.0f && cardCount != 0)
