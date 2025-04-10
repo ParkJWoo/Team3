@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 2345322866127736958}
   - component: {fileID: 6675498899115943694}
   - component: {fileID: 2777085714733167345}
+  - component: {fileID: 6012839707497429592}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -305,6 +306,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+--- !u!95 &6012839707497429592
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248905146483414729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f4c89a81046f20247aa3a9239497074d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2658654302270479333
 GameObject:
   m_ObjectHideFlags: 0
