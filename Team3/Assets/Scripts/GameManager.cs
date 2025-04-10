@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject hiddenPanel; // 히든 스테이지 클리어 시 나오는 판넬
     public GameObject infinityPanel;
     public GameObject optionPanel;
+    public GameObject optionButton; //우측 상단 옵션버튼
 
     public GameObject hiddenBtn;
     public GameObject hardBtn;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         board.gameObject.SetActive(false);
         timeTxt.gameObject.SetActive(false);
+        optionButton.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -232,6 +234,16 @@ public class GameManager : MonoBehaviour
         }
 
         Option();
+
+        if (board.gameObject.activeSelf == true)
+        {
+            optionButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            optionButton.gameObject.SetActive(false);
+        }
+
     }
 
     public void Matched()
