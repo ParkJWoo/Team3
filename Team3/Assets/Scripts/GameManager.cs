@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public Text nowScoreTxt;
     public Text bestScoreTxt;
+    public Text cbestScoreTxt;
 
     public bool isGamePlaying = false; //게임 시작 여부 판단
 
@@ -87,6 +88,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        cbestScoreTxt.text = "최고점수 : " + bestScore.ToString();
+
         Text hardbtnText = hardBtn.GetComponentInChildren<Text>();
         if (Clear >= 3)
         {
