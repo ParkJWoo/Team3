@@ -55,7 +55,6 @@ public class Card : MonoBehaviour
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched(); // 두번째 카드를 오픈하면 Matched()를 실행
         }
-        DestroyCardInvoke();
     }
 
     public void DestroyCard(float time)
