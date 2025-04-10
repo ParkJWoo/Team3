@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         board.gameObject.SetActive(false);
         timeTxt.gameObject.SetActive(false);
         optionButton.gameObject.SetActive(false);
+        //PlayerPrefs.DeleteAll(); //스테이지 해금 초기화
     }
 
     // Start is called before the first frame update
