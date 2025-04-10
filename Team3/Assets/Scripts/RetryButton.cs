@@ -37,6 +37,12 @@ public class RetryButton : MonoBehaviour
             GameManager.instance.failPanel.SetActive(false);
         }
 
+        if (GameManager.instance.optionPanel == true)
+        {
+            GameManager.instance.board.OnDisable();
+            GameManager.instance.optionPanel.SetActive(false);
+        }
+
         GameManager.instance.board.Start();
         GameManager.instance.isGamePlaying = true;
 
@@ -44,5 +50,6 @@ public class RetryButton : MonoBehaviour
         AudioManager.instance.StopTickSfx();
         AudioManager.instance.SwitchMusic(GameManager.instance.stage == 4, GameManager.instance.level == 2);
         AudioManager.instance.PlayMusic();
+
     }
 }
