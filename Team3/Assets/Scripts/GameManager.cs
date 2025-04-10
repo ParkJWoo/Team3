@@ -88,8 +88,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        cbestScoreTxt.text = "최고점수 : " + bestScore.ToString();
+        if(Clear > 2)                                   //기본모드 모두 클리어후 무한모드 최고점수보임
+        {
+            cbestScoreTxt.text = "무한모드 최고점수 : " + bestScore.ToString();
+        }
+        
 
         Text hardbtnText = hardBtn.GetComponentInChildren<Text>();
         if (Clear >= 3)
@@ -334,7 +337,6 @@ public class GameManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("bestScore", score);  
                 PlayerPrefs.Save(); 
-                Debug.Log("최고 점수 저장됨: " + score);
 
                 bestScoreTxt.text = score.ToString();
                 nowScoreTxt.text = score.ToString();

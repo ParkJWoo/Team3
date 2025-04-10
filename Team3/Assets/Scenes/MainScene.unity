@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4685602237027989648, guid: 8bf17a21782c42348936b224dd9339bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7227803025953975665, guid: 8bf17a21782c42348936b224dd9339bf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1309,7 +1313,7 @@ MonoBehaviour:
   cbestScoreTxt: {fileID: 438032173}
   isGamePlaying: 0
   cardCount: 0
-  Clear: 4
+  Clear: 0
   isGhost: 0
   stage: 0
   level: 0
