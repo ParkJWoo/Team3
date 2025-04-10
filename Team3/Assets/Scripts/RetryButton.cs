@@ -16,7 +16,7 @@ public class RetryButton : MonoBehaviour
         AudioManager.instance.ResetSpeed();
         AudioManager.instance.StopTickSfx();
 
-        GameManager.instance.time = 20.0f; // 타이머 초기화
+        GameManager.instance.time = 60.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
 
         GameManager.instance.failPanel.SetActive(false);
