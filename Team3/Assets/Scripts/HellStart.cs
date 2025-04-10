@@ -26,7 +26,7 @@ public class HellStart : MonoBehaviour
             GameManager.instance.board.gameObject.SetActive(true);
             GameManager.instance.timeTxt.gameObject.SetActive(true);
 
-            GameManager.instance.time = 30f;
+            GameManager.instance.time = 60.0f;
             GameManager.instance.isGamePlaying = true;
 
             AudioManager.instance.ResetSpeed();
