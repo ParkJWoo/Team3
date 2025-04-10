@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
     public GameObject hiddenPanel; // 히든 스테이지 클리어 시 나오는 판넬
     public GameObject infinityPanel;
+    public GameObject optionPanel;
 
     public GameObject hiddenBtn;
     public GameObject hardBtn;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     public Text nowScoreTxt;
     public Text bestScoreTxt;
-    public Text currentbestScore;
 
     public bool isGamePlaying = false; //게임 시작 여부 판단
 
@@ -87,11 +87,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        currentbestScore.text = "무한모드 최고점수 : " + bestScore;
-
-
         Text hardbtnText = hardBtn.GetComponentInChildren<Text>();
         if (Clear >= 3)
         {
@@ -229,6 +224,7 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.StopTickSfx();
         }
 
+        Option();
     }
 
     public void Matched()
@@ -338,8 +334,6 @@ public class GameManager : MonoBehaviour
 
                 bestScoreTxt.text = score.ToString();
                 nowScoreTxt.text = score.ToString();
-
-
             }
 
             else
@@ -373,5 +367,23 @@ public class GameManager : MonoBehaviour
     private void ReBoard()
     {
         board.Start();
+    }
+
+    private void Option()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && board.gameObject.activeSelf == true)
+        {
+            if (optionPanel.activeSelf == false)
+            {
+                optionPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else if (optionPanel.activeSelf == true)
+            {
+                optionPanel.SetActive(false);
+                Time.timeScale = 1f;
+            }
+
+        }
     }
 }

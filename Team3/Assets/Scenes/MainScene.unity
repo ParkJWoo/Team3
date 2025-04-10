@@ -1190,6 +1190,7 @@ MonoBehaviour:
   failPanel: {fileID: 2085373612}
   hiddenPanel: {fileID: 260073830}
   infinityPanel: {fileID: 1063708159}
+  optionPanel: {fileID: 0}
   hiddenBtn: {fileID: 1464498807}
   hardBtn: {fileID: 1981104606}
   st2Btnimg: {fileID: 28340409}
