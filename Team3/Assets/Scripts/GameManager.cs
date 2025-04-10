@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject nextPanel;  // 최종 스테이지가 아닌 스테이지 클리어 시 나오는 다음 스테이지 이동 판넬
     public GameObject failPanel;  // 제한 시간이 지날 시 나오는 실패 판넬
     public GameObject hiddenPanel; // 히든 스테이지 클리어 시 나오는 판넬
+    public GameObject infinityPanel;
 
     public GameObject hiddenBtn;
     public GameObject hardBtn;
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
     public float time = 60.0f;
+
+    public Text nowScoreTxt;
+    public Text bestScoreTxt;
 
     public bool isGamePlaying = false; //게임 시작 여부 판단
 
@@ -147,6 +151,7 @@ public class GameManager : MonoBehaviour
         {
             hiddenBtn.SetActive(true);
         }
+
         else
         {
             hiddenBtn.SetActive(false);
@@ -212,6 +217,11 @@ public class GameManager : MonoBehaviour
 
             Delete();
         }
+
+        if (AudioManager.instance.audioSource.pitch == 1.0f && AudioManager.instance.SFXSource.isPlaying)
+        {
+            AudioManager.instance.StopTickSfx();
+        }
     }
 
     public void Matched()
@@ -264,22 +274,24 @@ public class GameManager : MonoBehaviour
     public void GameClear(int _stage,int _score) // 게임이 끝났을 경우
     {
         //nextPanel.SetActive(true); //  카드를 모두 맞췄을 시, 클리어 판넬 생성
+        AudioManager.instance.ResetSpeed();
+        AudioManager.instance.StopTickSfx();
 
         int pastBestScore = PlayerPrefs.GetInt("bestScore", bestScore); // 무한모드 최고점수
         int pastStage = PlayerPrefs.GetInt("Clear", Clear); // 이전 최고 스테이지
         Time.timeScale = 0.0f;
 
-        if(stage >= 0 && stage <= 2)
-        {
-            nextPanel.SetActive(true);
-        }
+        //if (stage >= 0 && stage <= 2)
+        //{
+        //    nextPanel.SetActive(true);
+        //}
 
-        else if(stage == 3)
-        {
-            clearPanel.SetActive(true);
-        }
+        //else if (stage == 3)
+        //{
+        //    clearPanel.SetActive(true);
+        //}
 
-        else if (stage == 4)
+        if (stage == 4)
         {
             hiddenPanel.SetActive(true);
         }
@@ -292,18 +304,42 @@ public class GameManager : MonoBehaviour
             //{
             //    clearPanel.SetActive(true);
             //}
+
+            if (stage >= 0 && stage <= 2)
+            {
+                nextPanel.SetActive(true);
+            }
+
+            else if (stage == 3)
+            {
+                clearPanel.SetActive(true);
+            }
+
         }
         else if (level == 2)
         {
             Clear = _stage + 3;
             board.OnDisable();
 
+            infinityPanel.SetActive(true);
+
             if (score >= pastBestScore)
             {
                 PlayerPrefs.SetInt("bestScore", score);  
                 PlayerPrefs.Save(); 
                 Debug.Log("최고 점수 저장됨: " + score);
+
+                bestScoreTxt.text = score.ToString();
+                nowScoreTxt.text = score.ToString();
             }
+
+            else
+            {
+                bestScoreTxt.text = bestScore.ToString();
+                nowScoreTxt.text = score.ToString();
+            }
+
+            //score = 0;
         }
 
         if (pastStage < _stage)
@@ -321,7 +357,7 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
         if (level == 2)
         {
-            score = 0;  // 무한모드 점수 초기화
+            //score = 0;  // 무한모드 점수 초기화
         }
     }
 
