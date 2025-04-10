@@ -289,8 +289,6 @@ public class GameManager : MonoBehaviour
                 if (cardCount == 0)
                 {
                     Invoke("ReBoard", 1f);
-                    Debug.Log("score: " + score);
-                    
                 }
             }
         }
