@@ -247,7 +247,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if ((cardCount == 0 && mode == 1) || (time <= 0 && mode == 2))
+        if ((cardCount == 0 && mode == 1) || (time <= 0.0f && mode == 2))
         {
             timeTxt.gameObject.SetActive(false);
 

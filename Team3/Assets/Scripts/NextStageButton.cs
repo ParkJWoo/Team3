@@ -15,7 +15,17 @@ public class NextStageButton : MonoBehaviour
 
         GameManager.instance.nextPanel.SetActive(false);
 
-        GameManager.instance.time = 60.0f; // 타이머 초기화
+        if (GameManager.instance.mode == 1)
+        {
+            GameManager.instance.time = 60.0f; // 타이머 초기화
+        }
+
+        else if (GameManager.instance.mode == 2)
+        {
+            GameManager.instance.time = 90.0f; // 타이머 초기화
+        }
+
+        //GameManager.instance.time = 60.0f; // 타이머 초기화
         Time.timeScale = 1.0f;
 
         GameManager.instance.stage += 1;
