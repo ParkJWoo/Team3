@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         board.gameObject.SetActive(false);
         timeTxt.gameObject.SetActive(false);
         optionButton.gameObject.SetActive(false);
-        //PlayerPrefs.DeleteAll(); //스테이지 해금 초기화
+        //PlayerPrefs.DeleteAll(); //스테이지 해금 초기화 실제 플레이 시 지울것
     }
 
     // Start is called before the first frame update
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
 
         //무한 모드 전용 BGM 재생
-        if (mode == 2 && AudioManager.instance.IsHellMode())
+        if (mode == 2 && !AudioManager.instance.IsHellMode())
         {
             AudioManager.instance.SwitchMusic(false, true);
             AudioManager.instance.StopTickSfx();
@@ -220,6 +220,7 @@ public class GameManager : MonoBehaviour
         if (mode == 1 && time <= 0.0f && cardCount != 0)
         {
             failPanel.SetActive(true);
+            time = 0.0f;
             Time.timeScale = 1.0f;
             AudioManager.instance.ResetSpeed();
             AudioManager.instance.StopTickSfx();

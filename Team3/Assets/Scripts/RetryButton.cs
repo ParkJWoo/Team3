@@ -18,8 +18,16 @@ public class RetryButton : MonoBehaviour
 
         AudioManager.instance.SwitchMusic(GameManager.instance.stage == 4, GameManager.instance.mode == 2);
         AudioManager.instance.PlayMusic();
-
-        GameManager.instance.time = 60.0f; // 타이머 초기화
+        
+        if (GameManager.instance.mode == 1) // 기본 모드
+        {
+            GameManager.instance.time = 60.0f; 
+        }
+        else if (GameManager.instance.mode == 2) // 무한모드
+        {
+            GameManager.instance.time = 90.0f; 
+        }
+        
         Time.timeScale = 1.0f;
 
         GameManager.instance.failPanel.SetActive(false);
