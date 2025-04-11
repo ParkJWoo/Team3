@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
             //}
         }
 
-        if (mode == 1 && time <= 0.0f && cardCount != 0)
+        if (mode == 1 && time <= 0.0f && cardCount != 0)    //  실패 UI 생성 조건
         {
             failPanel.SetActive(true);
             Time.timeScale = 1.0f;
@@ -235,6 +235,9 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.StopTickSfx();
             isGamePlaying = false;
             board.gameObject.SetActive(false);
+
+            time = 0.0f;
+            timeTxt.text = time.ToString("N2");
         }
 
         if (cardCount <= 0 && mode == 1)
@@ -244,7 +247,6 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.StopTickSfx();
 
             board.gameObject.SetActive(false);
-
         }
 
         if ((cardCount == 0 && mode == 1) || (time <= 0.0f && mode == 2))
@@ -252,6 +254,9 @@ public class GameManager : MonoBehaviour
             timeTxt.gameObject.SetActive(false);
 
             GameClear(stage,score);
+
+            time = 0.0f;
+            timeTxt.text = time.ToString("N2");
 
             Delete();
         }
