@@ -173,20 +173,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //// BGM관련 순서 조정
-        //if (stage == 4 && !AudioManager.instance.IsHellMode())
-        //{
-        //    AudioManager.instance.SwitchMusic(true);
-        //    AudioManager.instance.StopTickSfx();
-        //}
-
-        ////무한 모드 전용 BGM 재생
-        //if (mode == 2 && AudioManager.instance.IsHellMode())
-        //{
-        //    AudioManager.instance.SwitchMusic(false, true);
-        //    AudioManager.instance.StopTickSfx();
-        //}
-
         // 모드별 BGM 전환
         if (stage == 4 && AudioManager.instance.audioSource.clip != AudioManager.instance.hellClip)
         {
@@ -217,14 +203,6 @@ public class GameManager : MonoBehaviour
             {
                 AudioManager.instance.PlayTickSfx();
             }
-
-            //if ((mode == 2 || stage == 4))
-            //{
-            //    if (!AudioManager.instance.SFXSource.isPlaying || AudioManager.instance.SFXSource.clip != AudioManager.instance.tickSfx)
-            //    {
-            //        AudioManager.instance.PlayTickSfx();
-            //    }
-            //}
         }
 
         if (mode == 1 && time <= 0.0f && cardCount != 0)    //  실패 UI 생성 조건
