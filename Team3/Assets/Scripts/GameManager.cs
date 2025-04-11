@@ -173,18 +173,29 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // BGM관련 순서 조정
-        if (stage == 4 && !AudioManager.instance.IsHellMode())
+        //// BGM관련 순서 조정
+        //if (stage == 4 && !AudioManager.instance.IsHellMode())
+        //{
+        //    AudioManager.instance.SwitchMusic(true);
+        //    AudioManager.instance.StopTickSfx();
+        //}
+
+        ////무한 모드 전용 BGM 재생
+        //if (mode == 2 && AudioManager.instance.IsHellMode())
+        //{
+        //    AudioManager.instance.SwitchMusic(false, true);
+        //    AudioManager.instance.StopTickSfx();
+        //}
+
+        // 모드별 BGM 전환
+        if (stage == 4 && AudioManager.instance.audioSource.clip != AudioManager.instance.hellClip)
         {
             AudioManager.instance.SwitchMusic(true);
-            AudioManager.instance.StopTickSfx();
         }
 
-        //무한 모드 전용 BGM 재생
-        if (mode == 2 && AudioManager.instance.IsHellMode())
+        else if (mode == 2 && AudioManager.instance.audioSource.clip != AudioManager.instance.infinityClip)
         {
             AudioManager.instance.SwitchMusic(false, true);
-            AudioManager.instance.StopTickSfx();
         }
 
         time -= Time.deltaTime;
